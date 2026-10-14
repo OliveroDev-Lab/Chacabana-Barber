@@ -139,6 +139,41 @@
       </div>
     </section>
 
+    <!-- ================= GALERÍA ================= -->
+    <section class="section" id="galeria">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-kicker" data-i18n="gallery.kicker">GALERÍA</span>
+          <h2 class="section-title" data-i18n="gallery.title">Nuestro trabajo habla por sí solo</h2>
+          <p class="section-lead" data-i18n="gallery.lead">Cortes, barbas y transformaciones reales hechas en el sillón de Chacabana.</p>
+        </header>
+
+        <div class="gallery-grid" id="galleryGrid" aria-label="Galería de trabajos">
+          <!-- Contenido generado desde gallery.json (fallback abajo) -->
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-01.webp" alt="Chacabana Barber Shop" width="1200" height="1600" loading="lazy" decoding="async"></figure>
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-02.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-03.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-04.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-05.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-06.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-07.webp" alt="Chacabana Barber Shop" width="1200" height="1600" loading="lazy" decoding="async"></figure>
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-08.webp" alt="Chacabana Barber Shop" width="1200" height="1600" loading="lazy" decoding="async"></figure>
+        </div>
+
+        <div class="gallery-more">
+          <nav class="gallery-pager" id="galleryPager" aria-label="Galería"></nav>
+          <p class="gallery-count" id="galleryCount" aria-live="polite"></p>
+        </div>
+
+        <div class="gallery-cta">
+          <a class="btn btn-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener" data-instagram>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+            <span data-i18n="gallery.follow">Síguenos en Instagram</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= SUCURSALES ================= -->
     <section class="section" id="sucursales">
       <div class="container">
@@ -165,13 +200,16 @@
                 <li><span data-i18n="hours.sunday">Domingo</span><b>10:00 AM – 5:00 PM</b></li>
               </ul>
               <div class="branch-actions">
-                <a class="btn btn-outline" href="https://maps.app.goo.gl/ompSfuD82TB1nF2V8" target="_blank" rel="noopener" data-maps-link="eisenhauer">
+                <a class="btn btn-outline" href="https://maps.app.goo.gl/Dxy3XJ55s1uHZmcH8" target="_blank" rel="noopener" data-maps-link="eisenhauer">
                   <span aria-hidden="true">🗺️</span> <span data-i18n="branch.directions">Cómo llegar (Google Maps)</span>
                 </a>
                 <button type="button" class="btn btn-primary" data-booking-trigger data-branch="Eisenhauer Rd">
                   <span aria-hidden="true">✂️</span> <span data-i18n="branch.book">Agendar en esta Sucursal</span>
                 </button>
               </div>
+              <p class="branch-social">
+                <a data-instagram-branch="eisenhauer" target="_blank" rel="noopener"></a>
+              </p>
               <div class="branch-map">
                 <iframe data-map="eisenhauer" title="Mapa Eisenhauer Rd" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
               </div>
@@ -194,13 +232,16 @@
                 <li><span data-i18n="hours.sunday">Domingo</span><b>10:00 AM – 5:00 PM</b></li>
               </ul>
               <div class="branch-actions">
-                <a class="btn btn-outline" href="https://maps.app.goo.gl/wbh9gSRRYcQfr2HS6" target="_blank" rel="noopener" data-maps-link="schaefer">
+                <a class="btn btn-outline" href="https://maps.app.goo.gl/WspSJKDveiJwfCVL9" target="_blank" rel="noopener" data-maps-link="schaefer">
                   <span aria-hidden="true">🗺️</span> <span data-i18n="branch.directions">Cómo llegar (Google Maps)</span>
                 </a>
                 <button type="button" class="btn btn-primary" data-booking-trigger data-branch="Schaefer Rd">
                   <span aria-hidden="true">✂️</span> <span data-i18n="branch.book">Agendar en esta Sucursal</span>
                 </button>
               </div>
+              <p class="branch-social">
+                <a data-instagram-branch="schaefer" target="_blank" rel="noopener"></a>
+              </p>
               <div class="branch-map">
                 <iframe data-map="schaefer" title="Mapa Schaefer Rd" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
               </div>
@@ -247,41 +288,6 @@
             <p class="service-desc">Paciencia y estilo para los más pequeños de la casa.</p>
             <span class="service-time">⏱ 25 min</span>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= GALERÍA ================= -->
-    <section class="section" id="galeria">
-      <div class="container">
-        <header class="section-head">
-          <span class="section-kicker" data-i18n="gallery.kicker">GALERÍA</span>
-          <h2 class="section-title" data-i18n="gallery.title">Nuestro trabajo habla por sí solo</h2>
-          <p class="section-lead" data-i18n="gallery.lead">Cortes, barbas y transformaciones reales hechas en el sillón de Chacabana.</p>
-        </header>
-
-        <div class="gallery-grid" id="galleryGrid" aria-label="Galería de trabajos">
-          <!-- Contenido generado desde gallery.json (fallback abajo) -->
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-01.webp" alt="Chacabana Barber Shop" width="1200" height="1600" loading="lazy" decoding="async"></figure>
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-02.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-03.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-04.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-05.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-06.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-07.webp" alt="Chacabana Barber Shop" width="1200" height="1600" loading="lazy" decoding="async"></figure>
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-08.webp" alt="Chacabana Barber Shop" width="1200" height="1600" loading="lazy" decoding="async"></figure>
-        </div>
-
-        <div class="gallery-more">
-          <nav class="gallery-pager" id="galleryPager" aria-label="Galería"></nav>
-          <p class="gallery-count" id="galleryCount" aria-live="polite"></p>
-        </div>
-
-        <div class="gallery-cta">
-          <a class="btn btn-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener" data-instagram>
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
-            <span data-i18n="gallery.follow">Síguenos en Instagram</span>
-          </a>
         </div>
       </div>
     </section>
@@ -349,8 +355,8 @@
 
       <div class="footer-contact">
         <h4 data-i18n="footer.branches">Sucursales</h4>
-        <p><strong>Eisenhauer Rd</strong><br>5002 Eisenhauer Rd, 78218</p>
-        <p><strong>Schaefer Rd</strong><br>9204 Schaefer Rd, Converse, 78109</p>
+        <p data-branch-footer="eisenhauer"></p>
+        <p data-branch-footer="schaefer"></p>
       </div>
     </div>
     <div class="footer-bottom container">
@@ -360,7 +366,7 @@
         <a href="terms.html" data-i18n="legal.terms">Términos</a>
         <a href="accessibility.html" data-i18n="legal.accessibility">Accesibilidad</a>
       </nav>
-      <p class="footer-credit" data-i18n="footer.credit">Desarrollado con 💈 para San Antonio, TX.</p>
+      <p class="footer-credit"><span data-i18n="footer.madeby">Sitio web creado por</span> <a href="https://oliverodev.com/" target="_blank" rel="noopener">Alexis Olivero</a></p>
     </div>
   </footer>
 

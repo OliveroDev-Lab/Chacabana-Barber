@@ -14,8 +14,13 @@ window.SITE_CONFIG = {
   whatsapp: "12100000000",
 
   /* Redes y perfiles (pon los reales) */
-  instagram: "https://www.instagram.com/",
+  instagram: "https://www.instagram.com/chacabanabarber/",
   instagramHandle: "@chacabanabarber",
+  /* Próximamente: TikTok y Facebook (se agregan aquí cuando estén) */
+  social: {
+    tiktok: "",
+    facebook: ""
+  },
   googleReviewsUrl: "https://search.google.com/local/reviews?placeid=YOUR_PLACE_ID",
   googleProfileUrl: "https://maps.app.goo.gl/ompSfuD82TB1nF2V8",
 
@@ -40,13 +45,15 @@ window.SITE_CONFIG = {
     {
       id: "eisenhauer",
       name: "Eisenhauer Rd",
+      instagram: "https://www.instagram.com/chacabanabarber/",
+      instagramHandle: "@chacabanabarber",
       street: "5002 Eisenhauer Rd",
       city: "San Antonio",
       state: "TX",
       zip: "78218",
       address: "5002 Eisenhauer Rd, San Antonio, TX 78218",
       phone: "",                         // opcional: "12105551234"
-      maps: "https://maps.app.goo.gl/ompSfuD82TB1nF2V8",
+      maps: "https://maps.app.goo.gl/Dxy3XJ55s1uHZmcH8",
       /* Mapa embebido sin API key: usa la dirección */
       mapQuery: "5002 Eisenhauer Rd, San Antonio, TX 78218",
       /* Horario semanal (formato 24h). null = cerrado ese día */
@@ -59,13 +66,15 @@ window.SITE_CONFIG = {
     {
       id: "schaefer",
       name: "Schaefer Rd",
+      instagram: "https://www.instagram.com/chacabanabarbershop2/",
+      instagramHandle: "@chacabanabarbershop2",
       street: "9204 Schaefer Rd",
       city: "Converse",
       state: "TX",
       zip: "78109",
       address: "9204 Schaefer Rd, Converse, TX 78109",
       phone: "",
-      maps: "https://maps.app.goo.gl/wbh9gSRRYcQfr2HS6",
+      maps: "https://maps.app.goo.gl/WspSJKDveiJwfCVL9",
       mapQuery: "9204 Schaefer Rd, Converse, TX 78109",
       hours: {
         mon: ["09:00", "19:30"], tue: ["09:00", "19:30"], wed: ["09:00", "19:30"],

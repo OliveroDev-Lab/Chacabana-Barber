@@ -339,6 +339,9 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid 
 .footer-legal{display:flex;gap:18px;flex-wrap:wrap}
 .footer-legal a{color:var(--gray);font-size:.8rem;text-decoration:underline;text-underline-offset:3px}
 .footer-legal a:hover{color:var(--blue-light)}
+.footer-contact .footer-ig{color:var(--blue-light);font-size:.82rem;text-decoration:underline;text-underline-offset:3px}
+.footer-credit a{color:var(--blue-light);text-decoration:underline;text-underline-offset:3px}
+.footer-credit a:hover{color:#fff}
 
 /* ===================== WHATSAPP FAB ===================== */
 .whatsapp-fab{
@@ -411,6 +414,9 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid 
 .branch-status small{font-weight:500;opacity:.75}
 .branch-map{margin-top:16px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--line-soft);height:180px}
 .branch-map iframe{width:100%;height:100%;border:0;filter:grayscale(.25) contrast(1.05)}
+.branch-social{margin:14px 0 0}
+.branch-social a{color:var(--blue-light);font-size:.88rem;text-decoration:underline;text-underline-offset:3px}
+.branch-social a:hover{color:#fff}
 
 /* ===================== REVIEWS (Google) ===================== */
 .reviews-summary{display:inline-flex;align-items:center;gap:14px;margin-top:8px}

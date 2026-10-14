@@ -50,6 +50,7 @@
       "footer.branches": "Sucursales", "footer.rights": "Todos los derechos reservados.",
       "footer.credit": "Desarrollado con 💈 para San Antonio, TX.",
       "legal.privacy": "Privacidad", "legal.terms": "Términos", "legal.accessibility": "Accesibilidad",
+      "footer.madeby": "Sitio web creado por",
       "fab.book": "Agendar",
       "form.title": "Agenda tu cita", "form.sub": "Completa los datos y te llevamos a WhatsApp con tu mensaje listo.",
       "form.name": "Nombre del Cliente", "form.name.ph": "Tu nombre",
@@ -102,6 +103,7 @@
       "footer.branches": "Locations", "footer.rights": "All rights reserved.",
       "footer.credit": "Built with 💈 for San Antonio, TX.",
       "legal.privacy": "Privacy", "legal.terms": "Terms", "legal.accessibility": "Accessibility",
+      "footer.madeby": "Website by",
       "fab.book": "Book",
       "form.title": "Book your appointment", "form.sub": "Fill in your details and we'll take you to WhatsApp with your message ready.",
       "form.name": "Client Name", "form.name.ph": "Your name",
@@ -167,6 +169,26 @@
       if (b && el) el.innerHTML = '<span aria-hidden="true">📍</span> ' + b.address;
     });
 
+    // Instagram por sucursal
+    document.querySelectorAll("[data-instagram-branch]").forEach(function (a) {
+      var b = branchById(a.getAttribute("data-instagram-branch"));
+      if (b && b.instagram) {
+        a.href = b.instagram;
+        a.textContent = "Instagram " + (b.instagramHandle || "");
+      } else {
+        a.closest(".branch-social").style.display = "none";
+      }
+    });
+
+    // Footer: direcciones completas + Instagram (config.js)
+    document.querySelectorAll("[data-branch-footer]").forEach(function (p) {
+      var b = branchById(p.getAttribute("data-branch-footer"));
+      if (!b) return;
+      var h = "<strong>" + b.name + "</strong><br>" + b.address;
+      if (b.instagram) h += '<br><a class="footer-ig" href="' + b.instagram + '" target="_blank" rel="noopener">' + (b.instagramHandle || "Instagram") + "</a>";
+      p.innerHTML = h;
+    });
+
     // Rating
     if (cfg.rating) {
       document.querySelectorAll("[data-rating-value]").forEach(function (el) { el.textContent = cfg.rating.value.toFixed(1); });
@@ -183,10 +205,6 @@
         branchSelect.appendChild(o);
       });
     }
-
-    // Crédito del desarrollador
-    var credit = document.querySelector(".footer-credit");
-    if (credit && cfg.developerCredit) credit.setAttribute("data-i18n", "footer.credit");
 
     buildStructuredData();
     setupHero();
