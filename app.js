@@ -34,7 +34,9 @@
       "gallery.cap4": "Combo VIP", "gallery.cap5": "Corte de Niños", "gallery.cap6": "Toalla Caliente",
       "gallery.follow": "Síguenos en Instagram",
       "lb.close": "Cerrar", "lb.prev": "Anterior", "lb.next": "Siguiente",
-      "gallery.showing": "Mostrando {shown} de {total} fotos", "gallery.more": "Ver más fotos ({n})",
+      "gallery.showing": "Mostrando {from}–{to} de {total} fotos",
+      "gallery.prev": "Página anterior", "gallery.next": "Página siguiente",
+      "gallery.page": "Ir a la página {n}", "gallery.pager": "Paginación de galería",
       "reviews.kicker": "RESEÑAS DE GOOGLE", "reviews.title": "Lo que dicen nuestros clientes",
       "reviews.based": "reseñas en Google", "reviews.seeAll": "Ver todas las reseñas en Google",
       "status.open": "Abierto ahora", "status.closed": "Cerrado", "status.closesAt": "Cierra {t}", "status.opensAt": "Abre {t}",
@@ -84,7 +86,9 @@
       "gallery.cap4": "VIP Combo", "gallery.cap5": "Kids Cut", "gallery.cap6": "Hot Towel",
       "gallery.follow": "Follow us on Instagram",
       "lb.close": "Close", "lb.prev": "Previous", "lb.next": "Next",
-      "gallery.showing": "Showing {shown} of {total} photos", "gallery.more": "Load more photos ({n})",
+      "gallery.showing": "Showing {from}–{to} of {total} photos",
+      "gallery.prev": "Previous page", "gallery.next": "Next page",
+      "gallery.page": "Go to page {n}", "gallery.pager": "Gallery pagination",
       "reviews.kicker": "GOOGLE REVIEWS", "reviews.title": "What our clients say",
       "reviews.based": "Google reviews", "reviews.seeAll": "See all reviews on Google",
       "status.open": "Open now", "status.closed": "Closed", "status.closesAt": "Closes {t}", "status.opensAt": "Opens {t}",
@@ -409,7 +413,7 @@
     renderServiceOptions();
     renderBarbers();
     renderStatuses();
-    updateGalleryUI();
+    if (galleryItems.length) renderGalleryPage(false);
     try { localStorage.setItem("chacabana-lang", lang); } catch (e) {}
   }
 
@@ -511,7 +515,7 @@
 
   /* ===================== GALERÍA INTERACTIVA + LIGHTBOX ===================== */
   var galleryItems = [];
-  var galleryShown = 0;
+  var galleryPage = 0;
   var lbIndex = 0;
   var lightbox = null;
   var tsx = 0, tsy = 0;
@@ -649,49 +653,100 @@
   }
 
   function galleryPageSize() {
-    return window.matchMedia("(min-width:900px)").matches ? 12 : 6;
+    if (window.matchMedia("(min-width:900px)").matches) return 12;
+    if (window.matchMedia("(min-width:640px)").matches) return 9;
+    return 6;
+  }
+  function galleryTotalPages() {
+    return Math.max(1, Math.ceil(galleryItems.length / galleryPageSize()));
   }
 
-  function appendGalleryBatch() {
+  function renderGalleryPage(scroll) {
     var grid = document.getElementById("galleryGrid");
     if (!grid) return;
     var size = galleryPageSize();
-    var end = Math.min(galleryShown + size, galleryItems.length);
-    for (var i = galleryShown; i < end; i++) {
+    var total = galleryTotalPages();
+    if (galleryPage > total - 1) galleryPage = total - 1;
+    if (galleryPage < 0) galleryPage = 0;
+    var start = galleryPage * size;
+    var end = Math.min(start + size, galleryItems.length);
+    grid.innerHTML = "";
+    for (var i = start; i < end; i++) {
       var fig = makeFigure(galleryItems[i], i);
-      fig.style.animationDelay = ((i - galleryShown) * 45) + "ms";
+      fig.style.animationDelay = ((i - start) * 45) + "ms";
       grid.appendChild(fig);
     }
-    galleryShown = end;
-    updateGalleryUI();
+    renderPager(total);
+    updateGalleryUI(start, end);
+    if (scroll) scrollToGallery();
   }
 
-  function updateGalleryUI() {
-    var more = document.getElementById("galleryMore");
+  function pageItems(total, current) {   // current 1-based
+    var out = [], i;
+    if (total <= 7) { for (i = 1; i <= total; i++) out.push(i); return out; }
+    out.push(1);
+    var from = Math.max(2, current - 1), to = Math.min(total - 1, current + 1);
+    if (from > 2) out.push("…");
+    for (i = from; i <= to; i++) out.push(i);
+    if (to < total - 1) out.push("…");
+    out.push(total);
+    return out;
+  }
+
+  function pagerButton(label, target, disabled, ariaLabel, current) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = label;
+    if (ariaLabel) b.setAttribute("aria-label", ariaLabel);
+    if (current) b.setAttribute("aria-current", "page");
+    if (disabled) b.disabled = true;
+    if (!disabled && !current) b.addEventListener("click", function () { galleryPage = target; renderGalleryPage(true); });
+    return b;
+  }
+
+  function renderPager(total) {
+    var pager = document.getElementById("galleryPager");
+    if (!pager) return;
+    pager.innerHTML = "";
+    if (total <= 1) { pager.hidden = true; return; }
+    pager.hidden = false;
+    pager.setAttribute("aria-label", t("gallery.pager"));
+    pager.appendChild(pagerButton("‹", galleryPage - 1, galleryPage === 0, t("gallery.prev")));
+    pageItems(total, galleryPage + 1).forEach(function (p) {
+      if (p === "…") {
+        var s = document.createElement("span");
+        s.className = "pager-ellipsis"; s.textContent = "…"; s.setAttribute("aria-hidden", "true");
+        pager.appendChild(s);
+      } else {
+        pager.appendChild(pagerButton(String(p), p - 1, false, t("gallery.page").replace("{n}", p), p - 1 === galleryPage));
+      }
+    });
+    pager.appendChild(pagerButton("›", galleryPage + 1, galleryPage === total - 1, t("gallery.next")));
+  }
+
+  function updateGalleryUI(start, end) {
     var count = document.getElementById("galleryCount");
-    var remaining = galleryItems.length - galleryShown;
     if (count) {
       count.textContent = t("gallery.showing")
-        .replace("{shown}", galleryShown)
+        .replace("{from}", start + 1)
+        .replace("{to}", end)
         .replace("{total}", galleryItems.length);
     }
-    if (more) {
-      if (remaining > 0) {
-        more.hidden = false;
-        more.textContent = t("gallery.more").replace("{n}", remaining);
-      } else {
-        more.hidden = true;
-      }
-    }
+  }
+
+  function scrollToGallery() {
+    var section = document.getElementById("galeria");
+    if (!section) return;
+    var y = section.getBoundingClientRect().top + window.pageYOffset - 76;
+    window.scrollTo({ top: y, behavior: "smooth" });
   }
 
   function renderGallery(items) {
     var grid = document.getElementById("galleryGrid");
     if (!grid || !items || !items.length) return;
     galleryItems = items;
-    galleryShown = 0;
-    grid.innerHTML = "";
-    appendGalleryBatch();
+    galleryPage = 0;
+    renderGalleryPage(false);
   }
 
   function loadGallery() {
@@ -700,13 +755,6 @@
       .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
       .then(function (items) { if (Array.isArray(items) && items.length) renderGallery(items); })
       .catch(function () { /* se mantiene el fallback estático */ });
-  }
-
-  var galleryMoreBtn = document.getElementById("galleryMore");
-  if (galleryMoreBtn) {
-    galleryMoreBtn.addEventListener("click", function () {
-      appendGalleryBatch();
-    });
   }
 
   /* ===================== INIT ===================== */
