@@ -40,11 +40,15 @@ window.SITE_CONFIG = {
     {
       id: "eisenhauer",
       name: "Eisenhauer Rd",
-      address: "5018 Eisenhauer Rd, San Antonio, TX 78218",
+      street: "5002 Eisenhauer Rd",
+      city: "San Antonio",
+      state: "TX",
+      zip: "78218",
+      address: "5002 Eisenhauer Rd, San Antonio, TX 78218",
       phone: "",                         // opcional: "12105551234"
       maps: "https://maps.app.goo.gl/ompSfuD82TB1nF2V8",
       /* Mapa embebido sin API key: usa la dirección */
-      mapQuery: "5018 Eisenhauer Rd, San Antonio, TX 78218",
+      mapQuery: "5002 Eisenhauer Rd, San Antonio, TX 78218",
       /* Horario semanal (formato 24h). null = cerrado ese día */
       hours: {
         mon: ["09:00", "19:30"], tue: ["09:00", "19:30"], wed: ["09:00", "19:30"],
@@ -55,10 +59,14 @@ window.SITE_CONFIG = {
     {
       id: "schaefer",
       name: "Schaefer Rd",
-      address: "5618 Schaefer Rd, San Antonio, TX 78244",
+      street: "9204 Schaefer Rd",
+      city: "Converse",
+      state: "TX",
+      zip: "78109",
+      address: "9204 Schaefer Rd, Converse, TX 78109",
       phone: "",
       maps: "https://maps.app.goo.gl/wbh9gSRRYcQfr2HS6",
-      mapQuery: "5618 Schaefer Rd, San Antonio, TX 78244",
+      mapQuery: "9204 Schaefer Rd, Converse, TX 78109",
       hours: {
         mon: ["09:00", "19:30"], tue: ["09:00", "19:30"], wed: ["09:00", "19:30"],
         thu: ["09:00", "19:30"], fri: ["09:00", "19:30"], sat: ["09:00", "19:30"],

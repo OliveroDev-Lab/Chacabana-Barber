@@ -160,6 +160,13 @@
     var gr = document.querySelector("[data-google-reviews]");
     if (gr && cfg.googleReviewsUrl) gr.href = cfg.googleReviewsUrl;
 
+    // Direcciones de las sucursales (fuente única: config.js)
+    document.querySelectorAll("[data-branch-id]").forEach(function (card) {
+      var b = branchById(card.getAttribute("data-branch-id"));
+      var el = card.querySelector(".branch-address");
+      if (b && el) el.innerHTML = '<span aria-hidden="true">📍</span> ' + b.address;
+    });
+
     // Rating
     if (cfg.rating) {
       document.querySelectorAll("[data-rating-value]").forEach(function (el) { el.textContent = cfg.rating.value.toFixed(1); });
@@ -220,6 +227,16 @@
       }).filter(Boolean);
     }
     var main = cfg.branches[0];
+    function postal(b) {
+      return {
+        "@type": "PostalAddress",
+        streetAddress: b.street || b.address,
+        addressLocality: b.city || "San Antonio",
+        addressRegion: b.state || "TX",
+        postalCode: b.zip || undefined,
+        addressCountry: "US"
+      };
+    }
     var ld = {
       "@context": "https://schema.org",
       "@type": "HairSalon",
@@ -230,15 +247,12 @@
       aggregateRating: cfg.rating ? {
         "@type": "AggregateRating", ratingValue: String(cfg.rating.value), reviewCount: String(cfg.rating.count)
       } : undefined,
-      address: {
-        "@type": "PostalAddress", streetAddress: main.address.split(",")[0],
-        addressLocality: "San Antonio", addressRegion: "TX", addressCountry: "US"
-      },
+      address: postal(main),
       department: cfg.branches.map(function (b) {
         return {
           "@type": "HairSalon", name: cfg.businessName + " - " + b.name,
           telephone: b.phone || undefined,
-          address: { "@type": "PostalAddress", streetAddress: b.address.split(",")[0], addressLocality: "San Antonio", addressRegion: "TX", addressCountry: "US" },
+          address: postal(b),
           openingHoursSpecification: hoursSpec(b.hours)
         };
       })
