@@ -33,6 +33,7 @@
       "gallery.cap1": "Skin Fade", "gallery.cap2": "Diseño de Barba", "gallery.cap3": "Burst Fade",
       "gallery.cap4": "Combo VIP", "gallery.cap5": "Corte de Niños", "gallery.cap6": "Toalla Caliente",
       "gallery.follow": "Síguenos en Instagram",
+      "lb.close": "Cerrar", "lb.prev": "Anterior", "lb.next": "Siguiente",
       "reviews.kicker": "RESEÑAS DE GOOGLE", "reviews.title": "Lo que dicen nuestros clientes",
       "reviews.based": "reseñas en Google", "reviews.seeAll": "Ver todas las reseñas en Google",
       "status.open": "Abierto ahora", "status.closed": "Cerrado", "status.closesAt": "Cierra {t}", "status.opensAt": "Abre {t}",
@@ -80,6 +81,7 @@
       "gallery.cap1": "Skin Fade", "gallery.cap2": "Beard Design", "gallery.cap3": "Burst Fade",
       "gallery.cap4": "VIP Combo", "gallery.cap5": "Kids Cut", "gallery.cap6": "Hot Towel",
       "gallery.follow": "Follow us on Instagram",
+      "lb.close": "Close", "lb.prev": "Previous", "lb.next": "Next",
       "reviews.kicker": "GOOGLE REVIEWS", "reviews.title": "What our clients say",
       "reviews.based": "Google reviews", "reviews.seeAll": "See all reviews on Google",
       "status.open": "Open now", "status.closed": "Closed", "status.closesAt": "Closes {t}", "status.opensAt": "Opens {t}",
@@ -470,6 +472,116 @@
     closeModal();
   });
 
+  /* ===================== GALERÍA INTERACTIVA + LIGHTBOX ===================== */
+  var galleryItems = [];
+  var lbIndex = 0;
+  var lightbox = null;
+  var tsx = 0, tsy = 0;
+
+  function buildLightbox() {
+    var lb = document.createElement("div");
+    lb.className = "lightbox";
+    lb.id = "lightbox";
+    lb.hidden = true;
+    lb.setAttribute("role", "dialog");
+    lb.setAttribute("aria-modal", "true");
+    lb.innerHTML =
+      '<button type="button" class="lb-close" aria-label="' + t("lb.close") + '">✕</button>' +
+      '<div class="lb-stage">' +
+        '<button type="button" class="lb-nav lb-prev" aria-label="' + t("lb.prev") + '">‹</button>' +
+        '<img class="lb-img" alt="">' +
+        '<button type="button" class="lb-nav lb-next" aria-label="' + t("lb.next") + '">›</button>' +
+      '</div>' +
+      '<span class="lb-counter"></span>';
+    document.body.appendChild(lb);
+
+    lb.querySelector(".lb-close").addEventListener("click", closeLightbox);
+    lb.querySelector(".lb-next").addEventListener("click", function (e) { e.stopPropagation(); lbNext(); });
+    lb.querySelector(".lb-prev").addEventListener("click", function (e) { e.stopPropagation(); lbPrev(); });
+    lb.addEventListener("click", function (e) { if (e.target === lb) closeLightbox(); });
+    lb.addEventListener("touchstart", function (e) {
+      tsx = e.touches[0].clientX; tsy = e.touches[0].clientY;
+    }, { passive: true });
+    lb.addEventListener("touchend", function (e) {
+      var dx = e.changedTouches[0].clientX - tsx;
+      var dy = e.changedTouches[0].clientY - tsy;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) { dx < 0 ? lbNext() : lbPrev(); }
+    }, { passive: true });
+    return lb;
+  }
+
+  function preload(i) {
+    var it = galleryItems[(i + galleryItems.length) % galleryItems.length];
+    if (it) { var im = new Image(); im.src = it.full; }
+  }
+  function updateLightbox() {
+    var it = galleryItems[lbIndex];
+    if (!it) return;
+    var im = lightbox.querySelector(".lb-img");
+    im.style.opacity = "0";
+    im.onload = function () { im.style.opacity = "1"; };
+    im.style.opacity = "0";
+    im.src = it.full;
+    im.alt = it.alt || "";
+    lightbox.querySelector(".lb-counter").textContent = (lbIndex + 1) + " / " + galleryItems.length;
+    preload(lbIndex + 1); preload(lbIndex - 1);
+  }
+  function openLightbox(i) {
+    if (!lightbox) lightbox = buildLightbox();
+    lbIndex = ((i % galleryItems.length) + galleryItems.length) % galleryItems.length;
+    updateLightbox();
+    lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+  function closeLightbox() {
+    if (lightbox) lightbox.hidden = true;
+    document.body.style.overflow = "";
+  }
+  function lbNext() { lbIndex = (lbIndex + 1) % galleryItems.length; updateLightbox(); }
+  function lbPrev() { lbIndex = (lbIndex - 1 + galleryItems.length) % galleryItems.length; updateLightbox(); }
+
+  document.addEventListener("keydown", function (e) {
+    if (!lightbox || lightbox.hidden) return;
+    if (e.key === "Escape") closeLightbox();
+    else if (e.key === "ArrowRight") lbNext();
+    else if (e.key === "ArrowLeft") lbPrev();
+  });
+
+  function renderGallery(items) {
+    var grid = document.getElementById("galleryGrid");
+    if (!grid || !items || !items.length) return;
+    galleryItems = items;
+    grid.innerHTML = "";
+    items.forEach(function (it, idx) {
+      var fig = document.createElement("figure");
+      fig.className = "g-item";
+      fig.setAttribute("tabindex", "0");
+      fig.setAttribute("role", "button");
+      fig.setAttribute("aria-label", (it.alt || "Foto") + " " + (idx + 1) + " de " + items.length);
+      var img = document.createElement("img");
+      img.src = it.thumb;
+      img.alt = it.alt || "";
+      img.loading = "lazy";
+      img.decoding = "async";
+      if (it.width && it.height) { img.width = it.width; img.height = it.height; }
+      img.addEventListener("error", function () { fig.remove(); });
+      fig.appendChild(img);
+      fig.addEventListener("click", function () { openLightbox(idx); });
+      fig.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLightbox(idx); }
+      });
+      grid.appendChild(fig);
+    });
+  }
+
+  function loadGallery() {
+    if (!window.fetch) return;
+    fetch("gallery.json", { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (items) { if (Array.isArray(items) && items.length) renderGallery(items); })
+      .catch(function () { /* se mantiene el fallback estático */ });
+  }
+
   /* ===================== INIT ===================== */
   document.getElementById("year").textContent = new Date().getFullYear();
   applyConfig();
@@ -478,6 +590,7 @@
   try { savedLang = localStorage.getItem("chacabana-lang"); } catch (e) {}
   if (!savedLang) savedLang = (navigator.language || "es").toLowerCase().indexOf("en") === 0 ? "en" : "es";
   applyLang(savedLang);
+  loadGallery();
 
   setInterval(renderStatuses, 60000);
 })();
