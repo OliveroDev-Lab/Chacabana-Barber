@@ -5,17 +5,19 @@
   Permissions-Policy: geolocation=(), camera=(), microphone=()
   X-XSS-Protection: 1; mode=block
 
-# Cache largo para assets estáticos
+# JS y CSS: revalidar siempre (evita servir versiones viejas tras un deploy)
 /*.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=0, must-revalidate
 /*.js
-  Cache-Control: public, max-age=31536000, immutable
-/images/*
-  Cache-Control: public, max-age=31536000, immutable
-/icons/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=0, must-revalidate
 
-# Revalidar el HTML siempre
+# Imágenes e iconos: caché corta con revalidación
+/images/*
+  Cache-Control: public, max-age=3600, must-revalidate
+/icons/*
+  Cache-Control: public, max-age=604800
+
+# HTML: nunca cachear
 /index.html
   Cache-Control: public, max-age=0, must-revalidate
 /
@@ -23,4 +25,4 @@
 
 # Manifest
 /manifest.webmanifest
-  Content-Type: application/manifest+json
+  Cache-Control: public, max-age=0, must-revalidate
