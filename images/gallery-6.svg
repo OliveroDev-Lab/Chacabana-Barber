@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="700" viewBox="0 0 500 700">
+  <defs>
+    <linearGradient id="g" x1="1" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#16304f"/><stop offset="1" stop-color="#0a1729"/></linearGradient>
+    <radialGradient id="r" cx="0.5" cy="0.3" r="0.8"><stop offset="0" stop-color="#6f9bff" stop-opacity="0.22"/><stop offset="1" stop-color="#6f9bff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="500" height="700" fill="url(#g)"/><rect width="500" height="700" fill="url(#r)"/>
+  <g fill="none" stroke="#ff4d5e" stroke-opacity="0.16" stroke-width="1"><path d="M0 100H500M0 200H500M0 300H500M0 400H500M0 500H500M0 600H500"/><path d="M100 0V700M200 0V700M300 0V700M400 0V700"/></g>
+  <g transform="translate(250 320)" fill="none" stroke="#6f9bff" stroke-width="4" stroke-linecap="round"><path d="M-70 40q70-90 140 0" /><path d="M-70 40h140"/></g>
+  <text x="250" y="480" text-anchor="middle" fill="#ff4d5e" font-family="Georgia,serif" font-size="18" letter-spacing="4">HOT TOWEL</text>
+</svg>

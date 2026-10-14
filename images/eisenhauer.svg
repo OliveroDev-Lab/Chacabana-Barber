@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#122842"/><stop offset="1" stop-color="#0a1729"/>
+    </linearGradient>
+    <radialGradient id="r" cx="0.75" cy="0.15" r="0.9">
+      <stop offset="0" stop-color="#ff4d5e" stop-opacity="0.35"/><stop offset="1" stop-color="#ff4d5e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#g)"/>
+  <rect width="640" height="360" fill="url(#r)"/>
+  <g stroke="#ff4d5e" stroke-opacity="0.16" stroke-width="1">
+    <path d="M0 60H640M0 120H640M0 180H640M0 240H640M0 300H640"/>
+    <path d="M80 0V360M160 0V360M240 0V360M320 0V360M400 0V360M480 0V360M560 0V360"/>
+  </g>
+  <g transform="translate(320 180)" fill="none" stroke="#6f9bff" stroke-width="3" stroke-linecap="round">
+    <circle cx="-34" cy="30" r="12"/><circle cx="34" cy="30" r="12"/>
+    <path d="M-24 22L30 -34M24 22L-30 -34"/>
+  </g>
+  <text x="320" y="250" text-anchor="middle" fill="#ff4d5e" font-family="Georgia,serif" font-size="20" letter-spacing="6">CHACABANA</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="g" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#122842"/><stop offset="1" stop-color="#0a1729"/></linearGradient>
+    <radialGradient id="r" cx="0.8" cy="0.2" r="0.8"><stop offset="0" stop-color="#ff4d5e" stop-opacity="0.3"/><stop offset="1" stop-color="#ff4d5e" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="500" height="500" fill="url(#g)"/><rect width="500" height="500" fill="url(#r)"/>
+  <g fill="none" stroke="#ff4d5e" stroke-opacity="0.16" stroke-width="1"><path d="M0 80H500M0 160H500M0 240H500M0 320H500M0 400H500"/><path d="M80 0V500M160 0V500M240 0V500M320 0V500M400 0V500"/></g>
+  <path d="M250 150c-50 0-80 35-80 90 0 40 15 70 25 100l10 40h90l10-40c10-30 25-60 25-100 0-55-30-90-80-90Z" fill="none" stroke="#6f9bff" stroke-width="4"/>
+  <path d="M195 250c20 18 90 18 110 0" fill="none" stroke="#6f9bff" stroke-width="4"/>
+  <text x="250" y="450" text-anchor="middle" fill="#ff4d5e" font-family="Georgia,serif" font-size="18" letter-spacing="4">BEARD DESIGN</text>
+</svg>

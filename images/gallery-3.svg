@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#16304f"/><stop offset="1" stop-color="#0a1729"/></linearGradient>
+    <radialGradient id="r" cx="0.5" cy="0.5" r="0.85"><stop offset="0" stop-color="#6f9bff" stop-opacity="0.26"/><stop offset="1" stop-color="#6f9bff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="500" height="500" fill="url(#g)"/><rect width="500" height="500" fill="url(#r)"/>
+  <g fill="none" stroke="#ff4d5e" stroke-opacity="0.16" stroke-width="1"><path d="M0 80H500M0 160H500M0 240H500M0 320H500M0 400H500"/><path d="M80 0V500M160 0V500M240 0V500M320 0V500M400 0V500"/></g>
+  <g transform="translate(250 230)" fill="none" stroke="#6f9bff" stroke-width="4" stroke-linecap="round"><circle cx="-40" cy="40" r="15"/><circle cx="40" cy="40" r="15"/><path d="M-28 30L36 -46M28 30L-36 -46"/></g>
+  <text x="250" y="430" text-anchor="middle" fill="#ff4d5e" font-family="Georgia,serif" font-size="18" letter-spacing="4">BURST FADE</text>
+</svg>
