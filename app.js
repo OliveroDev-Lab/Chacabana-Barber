@@ -34,6 +34,7 @@
       "gallery.cap4": "Combo VIP", "gallery.cap5": "Corte de Niños", "gallery.cap6": "Toalla Caliente",
       "gallery.follow": "Síguenos en Instagram",
       "lb.close": "Cerrar", "lb.prev": "Anterior", "lb.next": "Siguiente",
+      "gallery.showing": "Mostrando {shown} de {total} fotos", "gallery.more": "Ver más fotos ({n})",
       "reviews.kicker": "RESEÑAS DE GOOGLE", "reviews.title": "Lo que dicen nuestros clientes",
       "reviews.based": "reseñas en Google", "reviews.seeAll": "Ver todas las reseñas en Google",
       "status.open": "Abierto ahora", "status.closed": "Cerrado", "status.closesAt": "Cierra {t}", "status.opensAt": "Abre {t}",
@@ -82,6 +83,7 @@
       "gallery.cap4": "VIP Combo", "gallery.cap5": "Kids Cut", "gallery.cap6": "Hot Towel",
       "gallery.follow": "Follow us on Instagram",
       "lb.close": "Close", "lb.prev": "Previous", "lb.next": "Next",
+      "gallery.showing": "Showing {shown} of {total} photos", "gallery.more": "Load more photos ({n})",
       "reviews.kicker": "GOOGLE REVIEWS", "reviews.title": "What our clients say",
       "reviews.based": "Google reviews", "reviews.seeAll": "See all reviews on Google",
       "status.open": "Open now", "status.closed": "Closed", "status.closesAt": "Closes {t}", "status.opensAt": "Opens {t}",
@@ -405,6 +407,7 @@
     renderServiceOptions();
     renderBarbers();
     renderStatuses();
+    updateGalleryUI();
     try { localStorage.setItem("chacabana-lang", lang); } catch (e) {}
   }
 
@@ -495,6 +498,7 @@
 
   /* ===================== GALERÍA INTERACTIVA + LIGHTBOX ===================== */
   var galleryItems = [];
+  var galleryShown = 0;
   var lbIndex = 0;
   var lightbox = null;
   var tsx = 0, tsy = 0;
@@ -583,45 +587,85 @@
     else if (e.key === "ArrowLeft") lbPrev();
   });
 
+  function makeFigure(it, idx) {
+    var fig = document.createElement("figure");
+    fig.className = "g-item";
+    fig.setAttribute("tabindex", "0");
+    fig.setAttribute("role", "button");
+    fig.setAttribute("aria-label", (it.alt || "Foto") + " " + (idx + 1) + " / " + galleryItems.length);
+    var img = document.createElement("img");
+    img.src = it.thumb;
+    img.alt = it.alt || "";
+    img.loading = "lazy";
+    img.decoding = "async";
+    if (it.width && it.height) { img.width = it.width; img.height = it.height; }
+    var tries = 0;
+    img.addEventListener("error", function () {
+      if (tries++ === 0) {                 // reintenta una vez (evita abortos falsos)
+        var s = img.getAttribute("src") || "";
+        img.src = s + (s.indexOf("?") < 0 ? "?" : "&") + "r=" + Date.now();
+      } else {
+        fig.remove();                      // 404 real -> oculta
+      }
+    });
+    fig.appendChild(img);
+    if (it.type === "video") {
+      fig.classList.add("g-item--video");
+      var pl = document.createElement("span");
+      pl.className = "g-play"; pl.setAttribute("aria-hidden", "true"); pl.textContent = "▶";
+      fig.appendChild(pl);
+    }
+    fig.addEventListener("click", function () { openLightbox(idx); });
+    fig.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLightbox(idx); }
+    });
+    return fig;
+  }
+
+  function galleryPageSize() {
+    return window.matchMedia("(min-width:900px)").matches ? 12 : 6;
+  }
+
+  function appendGalleryBatch() {
+    var grid = document.getElementById("galleryGrid");
+    if (!grid) return;
+    var size = galleryPageSize();
+    var end = Math.min(galleryShown + size, galleryItems.length);
+    for (var i = galleryShown; i < end; i++) {
+      var fig = makeFigure(galleryItems[i], i);
+      fig.style.animationDelay = ((i - galleryShown) * 45) + "ms";
+      grid.appendChild(fig);
+    }
+    galleryShown = end;
+    updateGalleryUI();
+  }
+
+  function updateGalleryUI() {
+    var more = document.getElementById("galleryMore");
+    var count = document.getElementById("galleryCount");
+    var remaining = galleryItems.length - galleryShown;
+    if (count) {
+      count.textContent = t("gallery.showing")
+        .replace("{shown}", galleryShown)
+        .replace("{total}", galleryItems.length);
+    }
+    if (more) {
+      if (remaining > 0) {
+        more.hidden = false;
+        more.textContent = t("gallery.more").replace("{n}", remaining);
+      } else {
+        more.hidden = true;
+      }
+    }
+  }
+
   function renderGallery(items) {
     var grid = document.getElementById("galleryGrid");
     if (!grid || !items || !items.length) return;
     galleryItems = items;
+    galleryShown = 0;
     grid.innerHTML = "";
-    items.forEach(function (it, idx) {
-      var fig = document.createElement("figure");
-      fig.className = "g-item";
-      fig.setAttribute("tabindex", "0");
-      fig.setAttribute("role", "button");
-      fig.setAttribute("aria-label", (it.alt || "Foto") + " " + (idx + 1) + " de " + items.length);
-      var img = document.createElement("img");
-      img.src = it.thumb;
-      img.alt = it.alt || "";
-      img.loading = "lazy";
-      img.decoding = "async";
-      if (it.width && it.height) { img.width = it.width; img.height = it.height; }
-      var tries = 0;
-      img.addEventListener("error", function () {
-        if (tries++ === 0) {                 // reintenta una vez (evita abortos falsos)
-          var s = img.getAttribute("src") || "";
-          img.src = s + (s.indexOf("?") < 0 ? "?" : "&") + "r=" + Date.now();
-        } else {
-          fig.remove();                      // 404 real -> oculta
-        }
-      });
-      fig.appendChild(img);
-      if (it.type === "video") {
-        fig.classList.add("g-item--video");
-        var pl = document.createElement("span");
-        pl.className = "g-play"; pl.setAttribute("aria-hidden", "true"); pl.textContent = "▶";
-        fig.appendChild(pl);
-      }
-      fig.addEventListener("click", function () { openLightbox(idx); });
-      fig.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLightbox(idx); }
-      });
-      grid.appendChild(fig);
-    });
+    appendGalleryBatch();
   }
 
   function loadGallery() {
@@ -630,6 +674,13 @@
       .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
       .then(function (items) { if (Array.isArray(items) && items.length) renderGallery(items); })
       .catch(function () { /* se mantiene el fallback estático */ });
+  }
+
+  var galleryMoreBtn = document.getElementById("galleryMore");
+  if (galleryMoreBtn) {
+    galleryMoreBtn.addEventListener("click", function () {
+      appendGalleryBatch();
+    });
   }
 
   /* ===================== INIT ===================== */

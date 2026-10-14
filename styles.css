@@ -249,6 +249,10 @@ ul{margin:0;padding:0;list-style:none}
   width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
   background:rgba(200,16,46,.6);border:1px solid #fff;color:#fff;font-size:.9rem;backdrop-filter:blur(4px)}
 .gallery-cta{text-align:center;margin-top:28px}
+.gallery-more{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:26px}
+.gallery-count{color:var(--gray-2);font-size:.84rem;margin:0;letter-spacing:.05em}
+@keyframes g-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.g-item{animation:g-in .4s ease both}
 
 /* ===================== LIGHTBOX ===================== */
 .lightbox{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
