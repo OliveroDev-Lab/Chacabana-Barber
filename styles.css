@@ -167,10 +167,10 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid 
 }
 @media (min-width:768px){
   .hero-bg{background:
-    linear-gradient(90deg,rgba(8,19,36,.95) 0%,rgba(8,19,36,.78) 42%,rgba(8,19,36,.40) 100%),
-    linear-gradient(180deg,rgba(8,19,36,.25),rgba(8,19,36,.55)),
-    radial-gradient(80% 60% at 82% 0%,rgba(47,107,255,.28),transparent 60%),
-    radial-gradient(70% 70% at 0% 100%,rgba(200,16,46,.20),transparent 55%);}
+    linear-gradient(90deg,rgba(8,19,36,.94) 0%,rgba(8,19,36,.58) 44%,rgba(8,19,36,.14) 100%),
+    linear-gradient(180deg,rgba(8,19,36,.12),rgba(8,19,36,.5)),
+    radial-gradient(80% 60% at 82% 0%,rgba(47,107,255,.22),transparent 60%),
+    radial-gradient(70% 70% at 0% 100%,rgba(200,16,46,.18),transparent 55%);}
 }
 .hero-bg::after{
   content:"";position:absolute;inset:0;
@@ -197,7 +197,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid 
 .section{padding:64px 0}
 .section-alt{background:linear-gradient(180deg,transparent,var(--dark) 12%,var(--dark) 88%,transparent)}
 .section-head{text-align:center;max-width:680px;margin:0 auto 42px}
-.section-kicker{color:var(--red-light);font-size:.72rem;font-weight:700;letter-spacing:.26em;display:block;margin-bottom:12px}
+.section-kicker{color:var(--blue-light);font-size:.72rem;font-weight:700;letter-spacing:.26em;display:block;margin-bottom:12px}
 .section-title{font-family:var(--serif);font-size:clamp(1.7rem,5.5vw,2.7rem);margin:0 0 12px;line-height:1.15}
 .section-lead{color:var(--gray);margin:0;font-size:1rem}
 
@@ -358,12 +358,13 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid 
 .whatsapp-fab{
   position:fixed;right:18px;bottom:18px;z-index:90;
   display:inline-flex;align-items:center;gap:9px;
-  background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:0;
+  background:linear-gradient(135deg,var(--red-light),var(--red-deep));color:#fff;border:1px solid rgba(255,255,255,.18);
   padding:14px 20px;border-radius:999px;font-weight:700;font-size:.92rem;
-  box-shadow:0 16px 40px -12px rgba(37,211,102,.7);
-  transition:transform .25s,box-shadow .25s;
+  box-shadow:0 16px 40px -14px rgba(200,16,46,.75);
+  transition:transform .25s,box-shadow .25s,opacity .3s,visibility .3s;
 }
 .whatsapp-fab:hover{transform:translateY(-3px) scale(1.03)}
+.whatsapp-fab.is-hidden{opacity:0;visibility:hidden;transform:translateY(24px);pointer-events:none}
 .fab-label{display:none}
 
 /* ===================== MODAL ===================== */

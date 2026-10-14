@@ -180,11 +180,13 @@
     var gr = document.querySelector("[data-google-reviews]");
     if (gr && cfg.googleReviewsUrl) gr.href = cfg.googleReviewsUrl;
 
-    // Direcciones de las sucursales (fuente única: config.js)
+    // Sucursales: dirección + imagen de portada (config.js)
     document.querySelectorAll("[data-branch-id]").forEach(function (card) {
       var b = branchById(card.getAttribute("data-branch-id"));
       var el = card.querySelector(".branch-address");
       if (b && el) el.innerHTML = '<span aria-hidden="true">📍</span> ' + b.address;
+      var media = card.querySelector(".branch-media");
+      if (b && media && b.image) media.style.backgroundImage = "url('" + b.image + "')";
     });
 
     // Redes (header / footer) desde config.social
@@ -231,6 +233,7 @@
 
     buildStructuredData();
     setupHero();
+    setupFab();
     if (cfg.cloudflareAnalyticsToken) injectAnalytics(cfg.cloudflareAnalyticsToken);
   }
 
@@ -299,6 +302,21 @@
       })
     };
     el.textContent = JSON.stringify(ld);
+  }
+
+  function setupFab() {
+    var fab = document.querySelector(".whatsapp-fab");
+    if (!fab || !("IntersectionObserver" in window)) return;
+    var targets = document.querySelectorAll("[data-booking-trigger]:not(.whatsapp-fab):not(.nav-cta)");
+    if (!targets.length) return;
+    var active = new Set();
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) active.add(e.target); else active.delete(e.target);
+      });
+      fab.classList.toggle("is-hidden", active.size > 0);
+    }, { rootMargin: "0px 0px -12% 0px" });
+    Array.prototype.forEach.call(targets, function (t) { io.observe(t); });
   }
 
   function injectAnalytics(token) {

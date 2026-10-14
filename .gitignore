@@ -14,3 +14,6 @@
 
 # Temporal
 node_modules/
+
+# Documentación interna (no subir)
+PROJECT.md

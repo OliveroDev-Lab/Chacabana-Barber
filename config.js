@@ -47,6 +47,7 @@ window.SITE_CONFIG = {
     {
       id: "eisenhauer",
       name: "Eisenhauer Rd",
+      image: "images/gallery/full/gallery-01.webp",
       instagram: "https://www.instagram.com/chacabanabarber/",
       instagramHandle: "@chacabanabarber",
       street: "5002 Eisenhauer Rd",
@@ -68,6 +69,7 @@ window.SITE_CONFIG = {
     {
       id: "schaefer",
       name: "Schaefer Rd",
+      image: "images/gallery/full/gallery-07.webp",
       instagram: "https://www.instagram.com/chacabanabarbershop2/",
       instagramHandle: "@chacabanabarbershop2",
       street: "9204 Schaefer Rd",
