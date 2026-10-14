@@ -174,7 +174,28 @@
     if (credit && cfg.developerCredit) credit.setAttribute("data-i18n", "footer.credit");
 
     buildStructuredData();
+    setupHero();
     if (cfg.cloudflareAnalyticsToken) injectAnalytics(cfg.cloudflareAnalyticsToken);
+  }
+
+  /* Hero: imagen para todos, video de fondo solo en desktop (ahorra datos) */
+  function setupHero() {
+    var heroImg = document.querySelector(".hero-img");
+    var heroVid = document.querySelector("[data-hero-video]");
+    if (cfg.hero) {
+      if (heroImg && cfg.hero.image) heroImg.src = cfg.hero.image;
+      if (heroVid && cfg.hero.poster) heroVid.poster = cfg.hero.poster;
+    }
+    if (!heroVid || !cfg.hero || !cfg.hero.video) return;
+    var desktop = window.matchMedia("(min-width:768px)").matches;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var save = navigator.connection && navigator.connection.saveData;
+    if (!desktop || reduce || save) return;
+    heroVid.src = cfg.hero.video;
+    heroVid.load();
+    var p = heroVid.play();
+    if (p && p.catch) p.catch(function () {});
+    heroVid.addEventListener("playing", function () { heroVid.classList.add("is-on"); }, { once: true });
   }
 
   function buildStructuredData() {
@@ -489,7 +510,7 @@
       '<button type="button" class="lb-close" aria-label="' + t("lb.close") + '">✕</button>' +
       '<div class="lb-stage">' +
         '<button type="button" class="lb-nav lb-prev" aria-label="' + t("lb.prev") + '">‹</button>' +
-        '<img class="lb-img" alt="">' +
+        '<div class="lb-media"></div>' +
         '<button type="button" class="lb-nav lb-next" aria-label="' + t("lb.next") + '">›</button>' +
       '</div>' +
       '<span class="lb-counter"></span>';
@@ -512,17 +533,32 @@
 
   function preload(i) {
     var it = galleryItems[(i + galleryItems.length) % galleryItems.length];
-    if (it) { var im = new Image(); im.src = it.full; }
+    if (it && it.type !== "video" && it.full) { var im = new Image(); im.src = it.full; }
   }
   function updateLightbox() {
     var it = galleryItems[lbIndex];
     if (!it) return;
-    var im = lightbox.querySelector(".lb-img");
-    im.style.opacity = "0";
-    im.onload = function () { im.style.opacity = "1"; };
-    im.style.opacity = "0";
-    im.src = it.full;
-    im.alt = it.alt || "";
+    var media = lightbox.querySelector(".lb-media");
+    media.innerHTML = "";
+    if (it.type === "video") {
+      var v = document.createElement("video");
+      v.className = "lb-video";
+      v.controls = true; v.autoplay = true; v.muted = true; v.loop = true;
+      v.setAttribute("playsinline", "");
+      v.poster = it.poster || "";
+      (it.sources || []).forEach(function (s) {
+        var src = document.createElement("source"); src.src = s.src; src.type = s.type; v.appendChild(src);
+      });
+      media.appendChild(v);
+      var pp = v.play(); if (pp && pp.catch) pp.catch(function () {});
+    } else {
+      var im = document.createElement("img");
+      im.className = "lb-img"; im.alt = it.alt || "";
+      im.style.opacity = "0";
+      im.onload = function () { im.style.opacity = "1"; };
+      im.src = it.full;
+      media.appendChild(im);
+    }
     lightbox.querySelector(".lb-counter").textContent = (lbIndex + 1) + " / " + galleryItems.length;
     preload(lbIndex + 1); preload(lbIndex - 1);
   }
@@ -564,8 +600,22 @@
       img.loading = "lazy";
       img.decoding = "async";
       if (it.width && it.height) { img.width = it.width; img.height = it.height; }
-      img.addEventListener("error", function () { fig.remove(); });
+      var tries = 0;
+      img.addEventListener("error", function () {
+        if (tries++ === 0) {                 // reintenta una vez (evita abortos falsos)
+          var s = img.getAttribute("src") || "";
+          img.src = s + (s.indexOf("?") < 0 ? "?" : "&") + "r=" + Date.now();
+        } else {
+          fig.remove();                      // 404 real -> oculta
+        }
+      });
       fig.appendChild(img);
+      if (it.type === "video") {
+        fig.classList.add("g-item--video");
+        var pl = document.createElement("span");
+        pl.className = "g-play"; pl.setAttribute("aria-hidden", "true"); pl.textContent = "▶";
+        fig.appendChild(pl);
+      }
       fig.addEventListener("click", function () { openLightbox(idx); });
       fig.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLightbox(idx); }

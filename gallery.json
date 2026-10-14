@@ -1,5 +1,6 @@
 [
   {
+    "type": "image",
     "id": "gallery-01",
     "thumb": "images/gallery/thumb/gallery-01.webp",
     "full": "images/gallery/full/gallery-01.webp",
@@ -11,6 +12,7 @@
     "source": "chacabana-1.jpeg"
   },
   {
+    "type": "image",
     "id": "gallery-02",
     "thumb": "images/gallery/thumb/gallery-02.webp",
     "full": "images/gallery/full/gallery-02.webp",
@@ -22,6 +24,7 @@
     "source": "chacabana-2.jpeg"
   },
   {
+    "type": "image",
     "id": "gallery-03",
     "thumb": "images/gallery/thumb/gallery-03.webp",
     "full": "images/gallery/full/gallery-03.webp",
@@ -33,6 +36,7 @@
     "source": "chacabana-3.jpeg"
   },
   {
+    "type": "image",
     "id": "gallery-04",
     "thumb": "images/gallery/thumb/gallery-04.webp",
     "full": "images/gallery/full/gallery-04.webp",
@@ -44,6 +48,7 @@
     "source": "chacabana-4.jpeg"
   },
   {
+    "type": "image",
     "id": "gallery-05",
     "thumb": "images/gallery/thumb/gallery-05.webp",
     "full": "images/gallery/full/gallery-05.webp",
@@ -55,6 +60,7 @@
     "source": "chacabana-5.jpeg"
   },
   {
+    "type": "image",
     "id": "gallery-06",
     "thumb": "images/gallery/thumb/gallery-06.webp",
     "full": "images/gallery/full/gallery-06.webp",
@@ -66,6 +72,7 @@
     "source": "chacabana-6.jpeg"
   },
   {
+    "type": "image",
     "id": "gallery-07",
     "thumb": "images/gallery/thumb/gallery-07.webp",
     "full": "images/gallery/full/gallery-07.webp",
@@ -77,6 +84,7 @@
     "source": "chacabana-7.jpeg"
   },
   {
+    "type": "image",
     "id": "gallery-08",
     "thumb": "images/gallery/thumb/gallery-08.webp",
     "full": "images/gallery/full/gallery-08.webp",
@@ -88,6 +96,7 @@
     "source": "chacabana-8.jpeg"
   },
   {
+    "type": "image",
     "id": "gallery-09",
     "thumb": "images/gallery/thumb/gallery-09.webp",
     "full": "images/gallery/full/gallery-09.webp",
@@ -99,6 +108,7 @@
     "source": "chacabana-9.jpeg"
   },
   {
+    "type": "image",
     "id": "gallery-10",
     "thumb": "images/gallery/thumb/gallery-10.webp",
     "full": "images/gallery/full/gallery-10.webp",
@@ -110,6 +120,7 @@
     "source": "chacabana-10.jpeg"
   },
   {
+    "type": "image",
     "id": "gallery-11",
     "thumb": "images/gallery/thumb/gallery-11.webp",
     "full": "images/gallery/full/gallery-11.webp",
@@ -121,6 +132,7 @@
     "source": "chacabana-11.jpeg"
   },
   {
+    "type": "image",
     "id": "gallery-12",
     "thumb": "images/gallery/thumb/gallery-12.webp",
     "full": "images/gallery/full/gallery-12.webp",
@@ -132,6 +144,7 @@
     "source": "chacabana-12.jpeg"
   },
   {
+    "type": "image",
     "id": "gallery-13",
     "thumb": "images/gallery/thumb/gallery-13.webp",
     "full": "images/gallery/full/gallery-13.webp",
@@ -143,6 +156,7 @@
     "source": "chacabana-davis.jpeg"
   },
   {
+    "type": "image",
     "id": "gallery-14",
     "thumb": "images/gallery/thumb/gallery-14.webp",
     "full": "images/gallery/full/gallery-14.webp",
@@ -151,9 +165,10 @@
     "fullWidth": 1200,
     "fullHeight": 1600,
     "alt": "Chacabana Barber Shop - San Antonio, TX",
-    "source": "WhatsApp Image 2026-01-30 at 13.51.30.jpeg"
+    "source": "PHOTO-2026-02-04-02-33-18.jpg"
   },
   {
+    "type": "image",
     "id": "gallery-15",
     "thumb": "images/gallery/thumb/gallery-15.webp",
     "full": "images/gallery/full/gallery-15.webp",
@@ -162,9 +177,10 @@
     "fullWidth": 1200,
     "fullHeight": 1600,
     "alt": "Chacabana Barber Shop - San Antonio, TX",
-    "source": "WhatsApp Image 2026-01-30 at 15.28.55.jpeg"
+    "source": "PHOTO-2026-02-04-02-33-30.jpg"
   },
   {
+    "type": "image",
     "id": "gallery-16",
     "thumb": "images/gallery/thumb/gallery-16.webp",
     "full": "images/gallery/full/gallery-16.webp",
@@ -173,6 +189,626 @@
     "fullWidth": 1200,
     "fullHeight": 1600,
     "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-02-04-02-33-56.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-17",
+    "thumb": "images/gallery/thumb/gallery-17.webp",
+    "full": "images/gallery/full/gallery-17.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-02-04-02-34-14.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-18",
+    "thumb": "images/gallery/thumb/gallery-18.webp",
+    "full": "images/gallery/full/gallery-18.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-38-09 2.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-19",
+    "thumb": "images/gallery/thumb/gallery-19.webp",
+    "full": "images/gallery/full/gallery-19.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-38-09 3.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-20",
+    "thumb": "images/gallery/thumb/gallery-20.webp",
+    "full": "images/gallery/full/gallery-20.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-38-09 4.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-21",
+    "thumb": "images/gallery/thumb/gallery-21.webp",
+    "full": "images/gallery/full/gallery-21.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-38-09 5.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-22",
+    "thumb": "images/gallery/thumb/gallery-22.webp",
+    "full": "images/gallery/full/gallery-22.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-38-09 6.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-23",
+    "thumb": "images/gallery/thumb/gallery-23.webp",
+    "full": "images/gallery/full/gallery-23.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-38-09 7.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-24",
+    "thumb": "images/gallery/thumb/gallery-24.webp",
+    "full": "images/gallery/full/gallery-24.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-38-09 8.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-25",
+    "thumb": "images/gallery/thumb/gallery-25.webp",
+    "full": "images/gallery/full/gallery-25.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-38-09 9.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-26",
+    "thumb": "images/gallery/thumb/gallery-26.webp",
+    "full": "images/gallery/full/gallery-26.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-38-09 10.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-27",
+    "thumb": "images/gallery/thumb/gallery-27.webp",
+    "full": "images/gallery/full/gallery-27.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-38-09 11.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-28",
+    "thumb": "images/gallery/thumb/gallery-28.webp",
+    "full": "images/gallery/full/gallery-28.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-38-09.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-29",
+    "thumb": "images/gallery/thumb/gallery-29.webp",
+    "full": "images/gallery/full/gallery-29.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-07.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-30",
+    "thumb": "images/gallery/thumb/gallery-30.webp",
+    "full": "images/gallery/full/gallery-30.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-08.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-31",
+    "thumb": "images/gallery/thumb/gallery-31.webp",
+    "full": "images/gallery/full/gallery-31.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-10 2.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-32",
+    "thumb": "images/gallery/thumb/gallery-32.webp",
+    "full": "images/gallery/full/gallery-32.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-10 3.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-33",
+    "thumb": "images/gallery/thumb/gallery-33.webp",
+    "full": "images/gallery/full/gallery-33.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-10.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-34",
+    "thumb": "images/gallery/thumb/gallery-34.webp",
+    "full": "images/gallery/full/gallery-34.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-11 2.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-35",
+    "thumb": "images/gallery/thumb/gallery-35.webp",
+    "full": "images/gallery/full/gallery-35.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-11 3.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-36",
+    "thumb": "images/gallery/thumb/gallery-36.webp",
+    "full": "images/gallery/full/gallery-36.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-11 4.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-37",
+    "thumb": "images/gallery/thumb/gallery-37.webp",
+    "full": "images/gallery/full/gallery-37.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-11 5.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-38",
+    "thumb": "images/gallery/thumb/gallery-38.webp",
+    "full": "images/gallery/full/gallery-38.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-11 6.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-39",
+    "thumb": "images/gallery/thumb/gallery-39.webp",
+    "full": "images/gallery/full/gallery-39.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-11 7.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-40",
+    "thumb": "images/gallery/thumb/gallery-40.webp",
+    "full": "images/gallery/full/gallery-40.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-11 8.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-41",
+    "thumb": "images/gallery/thumb/gallery-41.webp",
+    "full": "images/gallery/full/gallery-41.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-11 9.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-42",
+    "thumb": "images/gallery/thumb/gallery-42.webp",
+    "full": "images/gallery/full/gallery-42.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-11 10.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-43",
+    "thumb": "images/gallery/thumb/gallery-43.webp",
+    "full": "images/gallery/full/gallery-43.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-11 11.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-44",
+    "thumb": "images/gallery/thumb/gallery-44.webp",
+    "full": "images/gallery/full/gallery-44.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-11 12.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-45",
+    "thumb": "images/gallery/thumb/gallery-45.webp",
+    "full": "images/gallery/full/gallery-45.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-11 13.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-46",
+    "thumb": "images/gallery/thumb/gallery-46.webp",
+    "full": "images/gallery/full/gallery-46.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-11 14.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-47",
+    "thumb": "images/gallery/thumb/gallery-47.webp",
+    "full": "images/gallery/full/gallery-47.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-04-24-15-41-11.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-48",
+    "thumb": "images/gallery/thumb/gallery-48.webp",
+    "full": "images/gallery/full/gallery-48.webp",
+    "width": 393,
+    "height": 700,
+    "fullWidth": 576,
+    "fullHeight": 1024,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-29-40.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-49",
+    "thumb": "images/gallery/thumb/gallery-49.webp",
+    "full": "images/gallery/full/gallery-49.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-29-57.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-50",
+    "thumb": "images/gallery/thumb/gallery-50.webp",
+    "full": "images/gallery/full/gallery-50.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-31-23.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-51",
+    "thumb": "images/gallery/thumb/gallery-51.webp",
+    "full": "images/gallery/full/gallery-51.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-31-38.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-52",
+    "thumb": "images/gallery/thumb/gallery-52.webp",
+    "full": "images/gallery/full/gallery-52.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-35-06.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-53",
+    "thumb": "images/gallery/thumb/gallery-53.webp",
+    "full": "images/gallery/full/gallery-53.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-35-56 2.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-54",
+    "thumb": "images/gallery/thumb/gallery-54.webp",
+    "full": "images/gallery/full/gallery-54.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-35-56.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-55",
+    "thumb": "images/gallery/thumb/gallery-55.webp",
+    "full": "images/gallery/full/gallery-55.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-35-57 2.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-56",
+    "thumb": "images/gallery/thumb/gallery-56.webp",
+    "full": "images/gallery/full/gallery-56.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-35-57 3.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-57",
+    "thumb": "images/gallery/thumb/gallery-57.webp",
+    "full": "images/gallery/full/gallery-57.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-35-57 4.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-58",
+    "thumb": "images/gallery/thumb/gallery-58.webp",
+    "full": "images/gallery/full/gallery-58.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-35-57 5.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-59",
+    "thumb": "images/gallery/thumb/gallery-59.webp",
+    "full": "images/gallery/full/gallery-59.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-35-57.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-60",
+    "thumb": "images/gallery/thumb/gallery-60.webp",
+    "full": "images/gallery/full/gallery-60.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-38-29 2.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-61",
+    "thumb": "images/gallery/thumb/gallery-61.webp",
+    "full": "images/gallery/full/gallery-61.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-38-29 3.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-62",
+    "thumb": "images/gallery/thumb/gallery-62.webp",
+    "full": "images/gallery/full/gallery-62.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "PHOTO-2026-10-14-16-38-29 4.jpg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-63",
+    "thumb": "images/gallery/thumb/gallery-63.webp",
+    "full": "images/gallery/full/gallery-63.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "WhatsApp Image 2026-01-30 at 13.51.30.jpeg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-64",
+    "thumb": "images/gallery/thumb/gallery-64.webp",
+    "full": "images/gallery/full/gallery-64.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "WhatsApp Image 2026-01-30 at 15.28.55.jpeg"
+  },
+  {
+    "type": "image",
+    "id": "gallery-65",
+    "thumb": "images/gallery/thumb/gallery-65.webp",
+    "full": "images/gallery/full/gallery-65.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
     "source": "WhatsApp Image 2026-01-30 at 17.08.43.jpeg"
+  },
+  {
+    "type": "video",
+    "id": "video-01",
+    "source": "video1.mp4",
+    "thumb": "videos/video-01-thumb.webp",
+    "poster": "videos/video-01-poster.webp",
+    "sources": [
+      {
+        "src": "videos/video-01.mp4",
+        "type": "video/mp4"
+      }
+    ],
+    "width": 1024,
+    "height": 576,
+    "alt": "Video - Chacabana Barber Shop, San Antonio, TX"
+  },
+  {
+    "type": "video",
+    "id": "video-02",
+    "source": "video2.mp4",
+    "thumb": "videos/video-02-thumb.webp",
+    "poster": "videos/video-02-poster.webp",
+    "sources": [
+      {
+        "src": "videos/video-02.mp4",
+        "type": "video/mp4"
+      }
+    ],
+    "width": 576,
+    "height": 1024,
+    "alt": "Video - Chacabana Barber Shop, San Antonio, TX"
   }
 ]

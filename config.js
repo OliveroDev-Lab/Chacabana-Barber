@@ -24,6 +24,14 @@ window.SITE_CONFIG = {
      Si lo dejas vacío, no se carga ningún script. */
   cloudflareAnalyticsToken: "",
 
+  /* ---------- Portada (Hero) ----------
+     Generado por tools/optimize_gallery.py (--hero y --hero-video) */
+  hero: {
+    image: "images/hero.webp",     // foto de portada (móvil y poster)
+    video: "videos/hero.mp4",      // video de fondo (solo desktop, sin audio)
+    poster: "images/hero.webp"
+  },
+
   /* Footer */
   developerCredit: "Desarrollado con 💈 para San Antonio, TX.",
 
