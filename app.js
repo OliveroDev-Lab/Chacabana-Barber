@@ -143,6 +143,24 @@
   }
 
   /* ===================== CONFIG → DOM (estático) ===================== */
+  var SOCIAL_ICONS = {
+    instagram: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>',
+    tiktok: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M16.5 3c.3 2.1 1.5 3.6 3.6 3.9v2.6c-1.4.1-2.6-.3-3.7-1v5.9c0 3.2-2.4 5.6-5.5 5.6A5.5 5.5 0 0 1 5.4 14.5c0-3 2.4-5.4 5.5-5.3v2.7c-.3-.1-.6-.1-.9-.1-1.5 0-2.7 1.2-2.7 2.7s1.2 2.7 2.7 2.7 2.8-1.2 2.8-2.8V3h2.7Z"/></svg>',
+    facebook: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M14 9h2.5l.5-3H14V4.3c0-.9.3-1.5 1.6-1.5H17V.1C16.7.1 15.6 0 14.4 0 11.9 0 10.2 1.5 10.2 4v2H7.5v3h2.7v9H14V9Z"/></svg>'
+  };
+  var SOCIAL_LABELS = { instagram: "Instagram", tiktok: "TikTok", facebook: "Facebook" };
+
+  function socialLinksHTML(urls) {
+    var html = "";
+    ["instagram", "tiktok", "facebook"].forEach(function (k) {
+      var u = urls && urls[k];
+      if (!u) return;
+      html += '<a class="social-link social-' + k + '" href="' + u + '" target="_blank" rel="noopener" aria-label="' +
+        SOCIAL_LABELS[k] + '">' + SOCIAL_ICONS[k] + "</a>";
+    });
+    return html;
+  }
+
   function branchById(id) {
     return (cfg.branches || []).filter(function (b) { return b.id === id; })[0];
   }
@@ -169,12 +187,17 @@
       if (b && el) el.innerHTML = '<span aria-hidden="true">📍</span> ' + b.address;
     });
 
-    // Instagram por sucursal
+    // Redes (header / footer) desde config.social
+    document.querySelectorAll("[data-socials]").forEach(function (box) {
+      box.innerHTML = socialLinksHTML(cfg.social || { instagram: cfg.instagram });
+    });
+
+    // Instagram por sucursal (icono + handle)
     document.querySelectorAll("[data-instagram-branch]").forEach(function (a) {
       var b = branchById(a.getAttribute("data-instagram-branch"));
       if (b && b.instagram) {
         a.href = b.instagram;
-        a.textContent = "Instagram " + (b.instagramHandle || "");
+        a.innerHTML = SOCIAL_ICONS.instagram + '<span class="branch-ig-handle">' + (b.instagramHandle || "Instagram") + "</span>";
       } else {
         a.closest(".branch-social").style.display = "none";
       }
@@ -185,7 +208,7 @@
       var b = branchById(p.getAttribute("data-branch-footer"));
       if (!b) return;
       var h = "<strong>" + b.name + "</strong><br>" + b.address;
-      if (b.instagram) h += '<br><a class="footer-ig" href="' + b.instagram + '" target="_blank" rel="noopener">' + (b.instagramHandle || "Instagram") + "</a>";
+      if (b.instagram) h += '<br><a class="footer-ig" href="' + b.instagram + '" target="_blank" rel="noopener" aria-label="Instagram ' + (b.instagramHandle || "") + '">' + SOCIAL_ICONS.instagram + " " + (b.instagramHandle || "Instagram") + "</a>";
       p.innerHTML = h;
     });
 
@@ -409,7 +432,8 @@
     "background:rgba(8,19,36,.98);backdrop-filter:blur(14px);border-bottom:1px solid rgba(111,155,255,.28);" +
     "padding:8px 20px 20px;max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .25s ease;display:flex;}" +
     ".main-nav.open{max-height:420px;opacity:1}" +
-    ".main-nav a{padding:15px 4px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center}" +
+    ".main-nav > a{padding:15px 4px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center}" +
+    ".nav-social{justify-content:center;padding:14px 0}" +
     ".main-nav .nav-cta{margin-top:14px;border-bottom:0}}";
   document.head.appendChild(navStyle);
 

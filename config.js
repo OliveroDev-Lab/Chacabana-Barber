@@ -16,8 +16,10 @@ window.SITE_CONFIG = {
   /* Redes y perfiles (pon los reales) */
   instagram: "https://www.instagram.com/chacabanabarber/",
   instagramHandle: "@chacabanabarber",
-  /* Próximamente: TikTok y Facebook (se agregan aquí cuando estén) */
+  /* Redes del negocio (para el header y el footer).
+     Deja "" en las que aún no tengas: no se muestran. */
   social: {
+    instagram: "https://www.instagram.com/chacabanabarber/",
     tiktok: "",
     facebook: ""
   },

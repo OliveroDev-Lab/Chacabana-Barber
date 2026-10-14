@@ -88,21 +88,32 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid 
 .brand-text small{font-size:.58rem;letter-spacing:.42em;color:var(--red-light);margin-top:3px}
 
 .main-nav{display:none}
-.main-nav a{
+.main-nav > a{
   position:relative;color:var(--white);font-size:.92rem;font-weight:500;
   letter-spacing:.02em;padding:8px 2px;transition:color .2s;
 }
-.main-nav a:not(.nav-cta):hover{color:var(--blue-light)}
-.main-nav a:not(.nav-cta)::after{
+.main-nav > a:not(.nav-cta):hover{color:var(--blue-light)}
+.main-nav > a:not(.nav-cta)::after{
   content:"";position:absolute;left:0;bottom:2px;width:0;height:2px;
   background:var(--red);transition:width .25s;
 }
-.main-nav a:not(.nav-cta):hover::after{width:100%}
+.main-nav > a:not(.nav-cta):hover::after{width:100%}
 .nav-cta{
   background:linear-gradient(135deg,var(--red-light),var(--red));
   color:#fff!important;padding:10px 18px!important;border-radius:999px;
   font-weight:700;box-shadow:0 8px 22px -10px var(--red);
 }
+
+/* Redes sociales (iconos) */
+.nav-social{display:flex;align-items:center;gap:8px}
+.footer-social{display:flex;align-items:center;gap:10px;margin-top:16px}
+.social-link{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;
+  border:1px solid var(--line);color:var(--gray);background:rgba(255,255,255,.04);
+  transition:color .2s,border-color .2s,background .2s,transform .2s}
+.social-link:hover{color:#fff;border-color:var(--blue-light);transform:translateY(-2px)}
+.social-instagram:hover{color:#fff;border-color:#e1306c;background:linear-gradient(135deg,#f58529,#dd2a7b 55%,#8134af)}
+.social-tiktok:hover{color:#fff;border-color:#25f4ee;background:#111}
+.social-facebook:hover{color:#fff;border-color:#1877f2;background:#1877f2}
 
 .header-actions{display:flex;align-items:center;gap:12px}
 .lang-toggle{
@@ -414,9 +425,12 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid 
 .branch-status small{font-weight:500;opacity:.75}
 .branch-map{margin-top:16px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--line-soft);height:180px}
 .branch-map iframe{width:100%;height:100%;border:0;filter:grayscale(.25) contrast(1.05)}
-.branch-social{margin:14px 0 0}
-.branch-social a{color:var(--blue-light);font-size:.88rem;text-decoration:underline;text-underline-offset:3px}
+.branch-social{margin:16px 0 0}
+.branch-social a{display:inline-flex;align-items:center;gap:8px;color:var(--blue-light);font-size:.88rem;font-weight:600}
 .branch-social a:hover{color:#fff}
+.branch-social svg{width:18px;height:18px}
+.footer-ig{display:inline-flex;align-items:center;gap:6px}
+.footer-ig svg{width:16px;height:16px;vertical-align:middle}
 
 /* ===================== REVIEWS (Google) ===================== */
 .reviews-summary{display:inline-flex;align-items:center;gap:14px;margin-top:8px}
