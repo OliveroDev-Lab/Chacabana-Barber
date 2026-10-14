@@ -13,6 +13,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23081324'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='%23ff4d5e' font-family='Georgia'%3EC%3C/text%3E%3C/svg%3E" />
   <link rel="manifest" href="manifest.webmanifest" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Chacabana Barber" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
@@ -354,6 +355,11 @@
     </div>
     <div class="footer-bottom container">
       <p>© <span id="year"></span> Chacabana Barber Shop. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+      <nav class="footer-legal" aria-label="Legal">
+        <a href="privacy.html" data-i18n="legal.privacy">Privacidad</a>
+        <a href="terms.html" data-i18n="legal.terms">Términos</a>
+        <a href="accessibility.html" data-i18n="legal.accessibility">Accesibilidad</a>
+      </nav>
       <p class="footer-credit" data-i18n="footer.credit">Desarrollado con 💈 para San Antonio, TX.</p>
     </div>
   </footer>
@@ -419,7 +425,7 @@
         <button type="submit" class="btn btn-primary btn-block">
           <span aria-hidden="true">✅</span> <span data-i18n="form.submit">Confirmar y Enviar a WhatsApp</span>
         </button>
-        <p class="form-hint" data-i18n="form.hint">Se abrirá WhatsApp con tu mensaje listo para enviar.</p>
+        <p class="form-hint" role="alert" data-i18n="form.hint">Se abrirá WhatsApp con tu mensaje listo para enviar.</p>
       </form>
     </div>
   </div>

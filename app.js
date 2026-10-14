@@ -47,6 +47,7 @@
       "footer.quote": "“El mejor fade que me han hecho en San Antonio. Súper atentos y el lugar bien chido.” — Cliente verificado",
       "footer.branches": "Sucursales", "footer.rights": "Todos los derechos reservados.",
       "footer.credit": "Desarrollado con 💈 para San Antonio, TX.",
+      "legal.privacy": "Privacidad", "legal.terms": "Términos", "legal.accessibility": "Accesibilidad",
       "fab.book": "Agendar",
       "form.title": "Agenda tu cita", "form.sub": "Completa los datos y te llevamos a WhatsApp con tu mensaje listo.",
       "form.name": "Nombre del Cliente", "form.name.ph": "Tu nombre",
@@ -96,6 +97,7 @@
       "footer.quote": "“The best fade I've had in San Antonio. Super attentive and the vibe is amazing.” — Verified client",
       "footer.branches": "Locations", "footer.rights": "All rights reserved.",
       "footer.credit": "Built with 💈 for San Antonio, TX.",
+      "legal.privacy": "Privacy", "legal.terms": "Terms", "legal.accessibility": "Accessibility",
       "fab.book": "Book",
       "form.title": "Book your appointment", "form.sub": "Fill in your details and we'll take you to WhatsApp with your message ready.",
       "form.name": "Client Name", "form.name.ph": "Your name",
@@ -458,21 +460,32 @@
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !modal.hidden) closeModal(); });
 
   /* ===================== ENVÍO A WHATSAPP ===================== */
+  var requiredFields = [
+    document.getElementById("f-name"), branchSelect, serviceSelect, dateInput, document.getElementById("f-time")
+  ];
+  requiredFields.forEach(function (f) {
+    f.addEventListener("input", function () {
+      f.closest(".field").classList.remove("invalid");
+      f.setAttribute("aria-invalid", "false");
+    });
+  });
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    var fields = [
-      document.getElementById("f-name"), branchSelect, serviceSelect, dateInput, document.getElementById("f-time")
-    ];
+    var fields = requiredFields;
     var valid = true;
     fields.forEach(function (f) {
       var wrap = f.closest(".field");
       var bad = !f.value.trim();
       wrap.classList.toggle("invalid", bad);
+      f.setAttribute("aria-invalid", bad ? "true" : "false");
       if (bad) valid = false;
     });
     if (!valid) {
       formHint.textContent = t("form.required");
       formHint.style.color = "#ff4d5e";
+      var firstBad = fields.filter(function (f) { return !f.value.trim(); })[0];
+      if (firstBad) firstBad.focus();
       return;
     }
 
@@ -566,25 +579,38 @@
     lightbox.querySelector(".lb-counter").textContent = (lbIndex + 1) + " / " + galleryItems.length;
     preload(lbIndex + 1); preload(lbIndex - 1);
   }
+  var lbLastFocus = null;
   function openLightbox(i) {
     if (!lightbox) lightbox = buildLightbox();
+    lbLastFocus = document.activeElement;
     lbIndex = ((i % galleryItems.length) + galleryItems.length) % galleryItems.length;
     updateLightbox();
     lightbox.hidden = false;
     document.body.style.overflow = "hidden";
+    var c = lightbox.querySelector(".lb-close");
+    if (c) c.focus();
   }
   function closeLightbox() {
     if (lightbox) lightbox.hidden = true;
     document.body.style.overflow = "";
+    if (lbLastFocus && lbLastFocus.focus) lbLastFocus.focus();
   }
   function lbNext() { lbIndex = (lbIndex + 1) % galleryItems.length; updateLightbox(); }
   function lbPrev() { lbIndex = (lbIndex - 1 + galleryItems.length) % galleryItems.length; updateLightbox(); }
 
   document.addEventListener("keydown", function (e) {
     if (!lightbox || lightbox.hidden) return;
-    if (e.key === "Escape") closeLightbox();
-    else if (e.key === "ArrowRight") lbNext();
-    else if (e.key === "ArrowLeft") lbPrev();
+    if (e.key === "Escape") { closeLightbox(); return; }
+    if (e.key === "ArrowRight") { lbNext(); return; }
+    if (e.key === "ArrowLeft") { lbPrev(); return; }
+    if (e.key === "Tab") {                       // trampa de foco (WCAG)
+      var items = lightbox.querySelectorAll('button, a[href], video, [tabindex]:not([tabindex="-1"])');
+      var list = Array.prototype.filter.call(items, function (el) { return el.offsetParent !== null || el.tagName === "VIDEO"; });
+      if (!list.length) return;
+      var first = list[0], last = list[list.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
   });
 
   function makeFigure(it, idx) {
