@@ -11,7 +11,7 @@ window.SITE_CONFIG = {
 
   /* ⚠️ WhatsApp: formato internacional, SIN "+", SIN espacios ni guiones.
      Ej. EE.UU. 210-555-1234  ->  "12105551234" */
-  whatsapp: "12100000000",
+  whatsapp: "12104735328",
 
   /* Redes y perfiles (pon los reales) */
   instagram: "https://www.instagram.com/chacabanabarber/",
