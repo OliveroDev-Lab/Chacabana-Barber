@@ -68,7 +68,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=10" />
 </head>
 <body>
   <a class="skip-link" href="#servicios" data-i18n="skip">Saltar al contenido</a>
@@ -120,6 +120,7 @@
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="container hero-content">
         <p class="hero-eyebrow" data-i18n="hero.eyebrow">★ BARBERÍA LATINA · SAN ANTONIO, TX</p>
+        <span class="hero-status" data-hero-status aria-live="polite"></span>
         <h1 class="hero-title" data-i18n="hero.title">El mejor corte y estilo fresco en San Antonio, TX</h1>
         <p class="hero-subtitle" data-i18n="hero.subtitle">
           Precisión, sabor latino y comodidad. Tu fade, tu barba y tu estilo en manos expertas — llega como quieras, sal como leyenda.
@@ -132,6 +133,7 @@
             <span aria-hidden="true">📍</span> <span data-i18n="hero.cta.locations">Ver Ubicaciones</span>
           </a>
         </div>
+        <p class="hero-note" data-i18n="hero.note">Cortes desde $25 · Aceptamos sin cita</p>
         <div class="hero-stats">
           <div class="stat"><strong>4.9★</strong><span data-i18n="hero.stat.rating">Calificación Google</span></div>
           <div class="stat"><strong>2</strong><span data-i18n="hero.stat.branches">Sucursales</span></div>
@@ -140,115 +142,13 @@
       </div>
     </section>
 
-    <!-- ================= GALERÍA ================= -->
-    <section class="section" id="galeria">
-      <div class="container">
-        <header class="section-head">
-          <span class="section-kicker" data-i18n="gallery.kicker">GALERÍA</span>
-          <h2 class="section-title" data-i18n="gallery.title">Nuestro trabajo habla por sí solo</h2>
-          <p class="section-lead" data-i18n="gallery.lead">Cortes, barbas y transformaciones reales hechas en el sillón de Chacabana.</p>
-        </header>
-
-        <div class="gallery-grid" id="galleryGrid" aria-label="Galería de trabajos">
-          <!-- Contenido generado desde gallery.json (fallback abajo) -->
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-01.webp" alt="Chacabana Barber Shop" width="1200" height="1600" loading="lazy" decoding="async"></figure>
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-02.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-03.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-04.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-05.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-06.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-07.webp" alt="Chacabana Barber Shop" width="1200" height="1600" loading="lazy" decoding="async"></figure>
-          <figure class="g-item"><img src="images/gallery/thumb/gallery-08.webp" alt="Chacabana Barber Shop" width="1200" height="1600" loading="lazy" decoding="async"></figure>
-        </div>
-
-        <div class="gallery-more">
-          <nav class="gallery-pager" id="galleryPager" aria-label="Galería"></nav>
-          <p class="gallery-count" id="galleryCount" aria-live="polite"></p>
-        </div>
-
-        <div class="gallery-cta">
-          <a class="btn btn-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener" data-instagram>
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
-            <span data-i18n="gallery.follow">Síguenos en Instagram</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= SUCURSALES ================= -->
-    <section class="section" id="sucursales">
-      <div class="container">
-        <header class="section-head">
-          <span class="section-kicker" data-i18n="branches.kicker">NUESTRAS SUCURSALES</span>
-          <h2 class="section-title" data-i18n="branches.title">Elige tu sucursal en San Antonio</h2>
-          <p class="section-lead" data-i18n="branches.lead">Dos ubicaciones, el mismo estilo inconfundible. Toca una tarjeta para agendar.</p>
-        </header>
-
-        <div class="branches-grid">
-          <!-- Sucursal 1 -->
-          <article class="branch-card" data-branch-id="eisenhauer">
-            <div class="branch-media" style="--img:url('images/eisenhauer.svg')" aria-hidden="true">
-              <span class="branch-badge" data-i18n="branch.badge1">SUCURSAL 1</span>
-            </div>
-            <div class="branch-body">
-              <div class="branch-title-row">
-                <h3 class="branch-name">Eisenhauer Rd</h3>
-                <span class="branch-status" data-status="eisenhauer" aria-live="polite"></span>
-              </div>
-              <p class="branch-address"><span aria-hidden="true">📍</span> 5002 Eisenhauer Rd, San Antonio, TX 78218</p>
-              <ul class="branch-hours">
-                <li><span data-i18n="hours.weekdays">Lun – Sáb</span><b>9:00 AM – 7:30 PM</b></li>
-                <li><span data-i18n="hours.sunday">Domingo</span><b>10:00 AM – 5:00 PM</b></li>
-              </ul>
-              <div class="branch-actions">
-                <a class="btn btn-outline" href="https://maps.app.goo.gl/Dxy3XJ55s1uHZmcH8" target="_blank" rel="noopener" data-maps-link="eisenhauer">
-                  <span aria-hidden="true">🗺️</span> <span data-i18n="branch.directions">Cómo llegar (Google Maps)</span>
-                </a>
-                <button type="button" class="btn btn-primary" data-booking-trigger data-branch="Eisenhauer Rd">
-                  <span aria-hidden="true">✂️</span> <span data-i18n="branch.book">Agendar en esta Sucursal</span>
-                </button>
-              </div>
-              <p class="branch-social">
-                <a data-instagram-branch="eisenhauer" target="_blank" rel="noopener"></a>
-              </p>
-              <div class="branch-map">
-                <iframe data-map="eisenhauer" title="Mapa Eisenhauer Rd" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-              </div>
-            </div>
-          </article>
-
-          <!-- Sucursal 2 -->
-          <article class="branch-card" data-branch-id="schaefer">
-            <div class="branch-media" style="--img:url('images/schaefer.svg')" aria-hidden="true">
-              <span class="branch-badge" data-i18n="branch.badge2">SUCURSAL 2</span>
-            </div>
-            <div class="branch-body">
-              <div class="branch-title-row">
-                <h3 class="branch-name">Schaefer Rd</h3>
-                <span class="branch-status" data-status="schaefer" aria-live="polite"></span>
-              </div>
-              <p class="branch-address"><span aria-hidden="true">📍</span> 9204 Schaefer Rd, Converse, TX 78109</p>
-              <ul class="branch-hours">
-                <li><span data-i18n="hours.weekdays">Lun – Sáb</span><b>9:00 AM – 7:30 PM</b></li>
-                <li><span data-i18n="hours.sunday">Domingo</span><b>10:00 AM – 5:00 PM</b></li>
-              </ul>
-              <div class="branch-actions">
-                <a class="btn btn-outline" href="https://maps.app.goo.gl/WspSJKDveiJwfCVL9" target="_blank" rel="noopener" data-maps-link="schaefer">
-                  <span aria-hidden="true">🗺️</span> <span data-i18n="branch.directions">Cómo llegar (Google Maps)</span>
-                </a>
-                <button type="button" class="btn btn-primary" data-booking-trigger data-branch="Schaefer Rd">
-                  <span aria-hidden="true">✂️</span> <span data-i18n="branch.book">Agendar en esta Sucursal</span>
-                </button>
-              </div>
-              <p class="branch-social">
-                <a data-instagram-branch="schaefer" target="_blank" rel="noopener"></a>
-              </p>
-              <div class="branch-map">
-                <iframe data-map="schaefer" title="Mapa Schaefer Rd" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-              </div>
-            </div>
-          </article>
-        </div>
+    <!-- ================= TRUST STRIP ================= -->
+    <section class="trust-strip" id="confianza" aria-label="Trust">
+      <div class="container trust-inner">
+        <div class="trust-item"><span class="trust-stars" aria-hidden="true">★★★★★</span><span><b data-rating-value>4.9</b> <small data-i18n="trust.google">en Google</small></span></div>
+        <div class="trust-item"><span aria-hidden="true">📍</span><small data-i18n="trust.locations">2 sucursales</small></div>
+        <div class="trust-item"><span aria-hidden="true">🚶</span><small data-i18n="trust.walkins">Aceptamos sin cita</small></div>
+        <div class="trust-item" data-trust-live></div>
       </div>
     </section>
 
@@ -288,6 +188,117 @@
       </div>
     </section>
 
+    <!-- ================= GALERÍA ================= -->
+    <section class="section" id="galeria">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-kicker" data-i18n="gallery.kicker">GALERÍA</span>
+          <h2 class="section-title" data-i18n="gallery.title">Nuestro trabajo habla por sí solo</h2>
+          <p class="section-lead" data-i18n="gallery.lead">Cortes, barbas y transformaciones reales hechas en el sillón de Chacabana.</p>
+        </header>
+
+        <div class="gallery-grid" id="galleryGrid" aria-label="Galería de trabajos">
+          <!-- Contenido generado desde gallery.json (fallback abajo) -->
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-01.webp" alt="Chacabana Barber Shop" width="1200" height="1600" loading="lazy" decoding="async"></figure>
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-02.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-03.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-04.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-05.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-06.webp" alt="Chacabana Barber Shop" width="768" height="1024" loading="lazy" decoding="async"></figure>
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-07.webp" alt="Chacabana Barber Shop" width="1200" height="1600" loading="lazy" decoding="async"></figure>
+          <figure class="g-item"><img src="images/gallery/thumb/gallery-08.webp" alt="Chacabana Barber Shop" width="1200" height="1600" loading="lazy" decoding="async"></figure>
+        </div>
+
+        <div class="gallery-more">
+          <nav class="gallery-pager" id="galleryPager" aria-label="Galería"></nav>
+          <p class="gallery-count" id="galleryCount" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SUCURSALES ================= -->
+    <section class="section" id="sucursales">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-kicker" data-i18n="branches.kicker">NUESTRAS SUCURSALES</span>
+          <h2 class="section-title" data-i18n="branches.title">Elige tu sucursal en San Antonio</h2>
+          <p class="section-lead" data-i18n="branches.lead">Dos ubicaciones, el mismo estilo inconfundible. Toca una tarjeta para agendar.</p>
+        </header>
+
+        <div class="branches-grid">
+          <!-- Sucursal 1 -->
+          <article class="branch-card" data-branch-id="eisenhauer">
+            <div class="branch-media" style="--img:url('images/eisenhauer.svg')" aria-hidden="true">
+              <span class="branch-badge" data-i18n="branch.badge1">SUCURSAL 1</span>
+            </div>
+            <div class="branch-body">
+              <div class="branch-title-row">
+                <h3 class="branch-name">Eisenhauer Rd</h3>
+                <span class="branch-status" data-status="eisenhauer" aria-live="polite"></span>
+              </div>
+              <p class="branch-address"><span aria-hidden="true">📍</span> 5002 Eisenhauer Rd, San Antonio, TX 78218</p>
+              <ul class="branch-hours">
+                <li><span data-i18n="hours.weekdays">Lun – Sáb</span><b>9:00 AM – 7:30 PM</b></li>
+                <li><span data-i18n="hours.sunday">Domingo</span><b>10:00 AM – 5:00 PM</b></li>
+              </ul>
+              <div class="branch-actions">
+                <a class="btn btn-outline" href="https://maps.app.goo.gl/Dxy3XJ55s1uHZmcH8" target="_blank" rel="noopener" data-maps-link="eisenhauer">
+                  <span aria-hidden="true">🗺️</span> <span data-i18n="branch.directions">Cómo llegar (Google Maps)</span>
+                </a>
+                <a class="btn btn-outline" href="#" data-phone-link>
+                  <span aria-hidden="true">📞</span> <span data-i18n="branch.call">Llamar</span>
+                </a>
+                <button type="button" class="btn btn-primary" data-booking-trigger data-branch="Eisenhauer Rd">
+                  <span aria-hidden="true">✂️</span> <span data-i18n="branch.book">Agendar en esta Sucursal</span>
+                </button>
+              </div>
+              <p class="branch-social">
+                <a data-instagram-branch="eisenhauer" target="_blank" rel="noopener"></a>
+              </p>
+              <div class="branch-map">
+                <iframe data-map="eisenhauer" title="Mapa Eisenhauer Rd" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+              </div>
+            </div>
+          </article>
+
+          <!-- Sucursal 2 -->
+          <article class="branch-card" data-branch-id="schaefer">
+            <div class="branch-media" style="--img:url('images/schaefer.svg')" aria-hidden="true">
+              <span class="branch-badge" data-i18n="branch.badge2">SUCURSAL 2</span>
+            </div>
+            <div class="branch-body">
+              <div class="branch-title-row">
+                <h3 class="branch-name">Schaefer Rd</h3>
+                <span class="branch-status" data-status="schaefer" aria-live="polite"></span>
+              </div>
+              <p class="branch-address"><span aria-hidden="true">📍</span> 9204 Schaefer Rd, Converse, TX 78109</p>
+              <ul class="branch-hours">
+                <li><span data-i18n="hours.weekdays">Lun – Sáb</span><b>9:00 AM – 7:30 PM</b></li>
+                <li><span data-i18n="hours.sunday">Domingo</span><b>10:00 AM – 5:00 PM</b></li>
+              </ul>
+              <div class="branch-actions">
+                <a class="btn btn-outline" href="https://maps.app.goo.gl/WspSJKDveiJwfCVL9" target="_blank" rel="noopener" data-maps-link="schaefer">
+                  <span aria-hidden="true">🗺️</span> <span data-i18n="branch.directions">Cómo llegar (Google Maps)</span>
+                </a>
+                <a class="btn btn-outline" href="#" data-phone-link>
+                  <span aria-hidden="true">📞</span> <span data-i18n="branch.call">Llamar</span>
+                </a>
+                <button type="button" class="btn btn-primary" data-booking-trigger data-branch="Schaefer Rd">
+                  <span aria-hidden="true">✂️</span> <span data-i18n="branch.book">Agendar en esta Sucursal</span>
+                </button>
+              </div>
+              <p class="branch-social">
+                <a data-instagram-branch="schaefer" target="_blank" rel="noopener"></a>
+              </p>
+              <div class="branch-map">
+                <iframe data-map="schaefer" title="Mapa Schaefer Rd" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= RESEÑAS DE GOOGLE ================= -->
     <section class="section section-alt" id="resenas">
       <div class="container">
@@ -311,6 +322,18 @@
       </div>
     </section>
 
+    <!-- ================= SÍGUENOS / REDES ================= -->
+    <section class="section social-section" id="redes">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-kicker" data-i18n="social.kicker">SÍGUENOS</span>
+          <h2 class="section-title" data-i18n="social.title">Síguenos en redes</h2>
+          <p class="section-lead" data-i18n="social.lead">Mira nuestros cortes más recientes y no te pierdas los diseños nuevos.</p>
+        </header>
+        <div class="social-grid" id="socialGrid"></div>
+      </div>
+    </section>
+
     <!-- ================= AGENDAR (CTA) ================= -->
     <section class="section section-book" id="agendar">
       <div class="container book-inner">
@@ -319,7 +342,7 @@
           <p data-i18n="book.lead">Completa tus datos y confirma tu cita directo por WhatsApp. Rápido, fácil y sin esperas.</p>
           <ul class="book-points">
             <li data-i18n="book.point1">✅ Confirmación inmediata</li>
-            <li data-i18n="book.point2">✅ Elige tu sucursal y barbero</li>
+            <li data-i18n="book.point2">✅ Elige tu sucursal y servicio</li>
             <li data-i18n="book.point3">✅ Sin llamadas ni apps complicadas</li>
           </ul>
         </div>
@@ -354,6 +377,8 @@
         <h4 data-i18n="footer.branches">Sucursales</h4>
         <p data-branch-footer="eisenhauer"></p>
         <p data-branch-footer="schaefer"></p>
+        <p class="footer-phone"><a href="#" data-phone-link>📞 <span data-phone-number></span></a></p>
+        <p class="footer-hours" data-i18n="footer.hoursValue">Lun–Sáb 9:00 AM – 7:30 PM · Dom 10:00 AM – 5:00 PM</p>
       </div>
     </div>
     <div class="footer-bottom container">
@@ -367,11 +392,18 @@
     </div>
   </footer>
 
-  <!-- Botón flotante WhatsApp -->
-  <button type="button" class="whatsapp-fab" data-booking-trigger aria-label="Agendar por WhatsApp">
-    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.7-1.2-4.4-4-4.6-4.2-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2.1.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.3.5c-.1.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.2.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.3.1.5.2.5.4.1.2.1.7-.1 1.3Z"/></svg>
-    <span class="fab-label" data-i18n="fab.book">Agendar</span>
-  </button>
+  <!-- ================= BARRA DE ACCIÓN MÓVIL ================= -->
+  <nav class="mobile-bar" aria-label="Acciones rápidas">
+    <button type="button" class="mobile-bar-btn is-primary" data-booking-trigger>
+      <span aria-hidden="true">📅</span><span data-i18n="bar.book">Agendar</span>
+    </button>
+    <a class="mobile-bar-btn" href="#" data-phone-link>
+      <span aria-hidden="true">📞</span><span data-i18n="bar.call">Llamar</span>
+    </a>
+    <a class="mobile-bar-btn" href="#sucursales">
+      <span aria-hidden="true">📍</span><span data-i18n="bar.directions">Cómo llegar</span>
+    </a>
+  </nav>
 
   <!-- ================= MODAL DE CITAS ================= -->
   <div class="modal-overlay" id="bookingModal" hidden>
@@ -424,7 +456,7 @@
     </div>
   </div>
 
-  <script src="config.js?v=9" defer></script>
-  <script src="app.js?v=9" defer></script>
+  <script src="config.js?v=10" defer></script>
+  <script src="app.js?v=10" defer></script>
 </body>
 </html>

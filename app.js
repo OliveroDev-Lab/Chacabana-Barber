@@ -33,6 +33,7 @@
       "gallery.cap1": "Skin Fade", "gallery.cap2": "Diseño de Barba", "gallery.cap3": "Burst Fade",
       "gallery.cap4": "Combo VIP", "gallery.cap5": "Corte de Niños", "gallery.cap6": "Toalla Caliente",
       "gallery.follow": "Síguenos en Instagram",
+      "social.kicker": "SÍGUENOS", "social.title": "Síguenos en redes", "social.lead": "Mira nuestros cortes más recientes y no te pierdas los diseños nuevos.",
       "lb.close": "Cerrar", "lb.prev": "Anterior", "lb.next": "Siguiente",
       "gallery.showing": "Mostrando {from}–{to} de {total} fotos",
       "gallery.prev": "Página anterior", "gallery.next": "Página siguiente",
@@ -51,6 +52,12 @@
       "footer.credit": "Desarrollado con 💈 para San Antonio, TX.",
       "legal.privacy": "Privacidad", "legal.terms": "Términos", "legal.accessibility": "Accesibilidad",
       "footer.madeby": "Sitio web creado por",
+      "hero.note": "Cortes desde $25 · Aceptamos sin cita",
+      "trust.google": "en Google", "trust.locations": "2 sucursales", "trust.walkins": "Aceptamos sin cita",
+      "branch.call": "Llamar",
+      "bar.book": "Agendar", "bar.call": "Llamar", "bar.directions": "Cómo llegar",
+      "svc.book": "Reservar",
+      "footer.hoursValue": "Lun–Sáb 9:00 AM – 7:30 PM · Dom 10:00 AM – 5:00 PM",
       "fab.book": "Agendar",
       "form.title": "Agenda tu cita", "form.sub": "Completa los datos y te llevamos a WhatsApp con tu mensaje listo.",
       "form.name": "Nombre del Cliente", "form.name.ph": "Tu nombre",
@@ -86,6 +93,7 @@
       "gallery.cap1": "Skin Fade", "gallery.cap2": "Beard Design", "gallery.cap3": "Burst Fade",
       "gallery.cap4": "VIP Combo", "gallery.cap5": "Kids Cut", "gallery.cap6": "Hot Towel",
       "gallery.follow": "Follow us on Instagram",
+      "social.kicker": "FOLLOW US", "social.title": "Follow us", "social.lead": "See our latest cuts and don't miss the new designs.",
       "lb.close": "Close", "lb.prev": "Previous", "lb.next": "Next",
       "gallery.showing": "Showing {from}–{to} of {total} photos",
       "gallery.prev": "Previous page", "gallery.next": "Next page",
@@ -104,6 +112,12 @@
       "footer.credit": "Built with 💈 for San Antonio, TX.",
       "legal.privacy": "Privacy", "legal.terms": "Terms", "legal.accessibility": "Accessibility",
       "footer.madeby": "Website by",
+      "hero.note": "Cuts from $25 · Walk-ins welcome",
+      "trust.google": "on Google", "trust.locations": "2 locations", "trust.walkins": "Walk-ins welcome",
+      "branch.call": "Call",
+      "bar.book": "Book", "bar.call": "Call", "bar.directions": "Directions",
+      "svc.book": "Book",
+      "footer.hoursValue": "Mon–Sat 9:00 AM – 7:30 PM · Sun 10:00 AM – 5:00 PM",
       "fab.book": "Book",
       "form.title": "Book your appointment", "form.sub": "Fill in your details and we'll take you to WhatsApp with your message ready.",
       "form.name": "Client Name", "form.name.ph": "Your name",
@@ -193,6 +207,7 @@
     document.querySelectorAll("[data-socials]").forEach(function (box) {
       box.innerHTML = socialLinksHTML(cfg.social || { instagram: cfg.instagram });
     });
+    renderSocialSection();
 
     // Instagram por sucursal (icono + handle)
     document.querySelectorAll("[data-instagram-branch]").forEach(function (a) {
@@ -230,7 +245,7 @@
 
     buildStructuredData();
     setupHero();
-    setupFab();
+    wirePhone();
     if (cfg.cloudflareAnalyticsToken) injectAnalytics(cfg.cloudflareAnalyticsToken);
   }
 
@@ -301,19 +316,15 @@
     el.textContent = JSON.stringify(ld);
   }
 
-  function setupFab() {
-    var fab = document.querySelector(".whatsapp-fab");
-    if (!fab || !("IntersectionObserver" in window)) return;
-    var targets = document.querySelectorAll("[data-booking-trigger]:not(.whatsapp-fab):not(.nav-cta)");
-    if (!targets.length) return;
-    var active = new Set();
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) active.add(e.target); else active.delete(e.target);
-      });
-      fab.classList.toggle("is-hidden", active.size > 0);
-    }, { rootMargin: "0px 0px -12% 0px" });
-    Array.prototype.forEach.call(targets, function (t) { io.observe(t); });
+  function wirePhone() {
+    var num = cfg.phone || cfg.whatsapp || "";
+    document.querySelectorAll("[data-phone-number]").forEach(function (el) {
+      el.textContent = cfg.phoneDisplay || (num ? "+" + num : "");
+    });
+    document.querySelectorAll("[data-phone-link]").forEach(function (a) {
+      if (!num) { a.style.display = "none"; a.removeAttribute("href"); return; }
+      a.href = "tel:+" + num;
+    });
   }
 
   function injectAnalytics(token) {
@@ -344,14 +355,27 @@
   }
 
   function renderStatuses() {
+    var openCount = 0, firstStatus = null;
     document.querySelectorAll("[data-status]").forEach(function (el) {
       var b = branchById(el.getAttribute("data-status"));
       if (!b) return;
       var s = statusFor(b);
+      if (!firstStatus) firstStatus = s;
+      if (s.open) openCount++;
       el.className = "branch-status " + (s.open ? "is-open" : "is-closed");
       el.innerHTML = '<span class="dot"></span>' + (s.open ? t("status.open") : t("status.closed")) +
         (s.detail ? ' <small>· ' + s.detail + "</small>" : "");
     });
+    // Estado general en el hero y en la barra de confianza
+    var isOpen = openCount > 0;
+    var label = isOpen ? t("status.open") : t("status.closed");
+    var detail = firstStatus && firstStatus.detail ? " <small>· " + firstStatus.detail + "</small>" : "";
+    var html = '<span class="dot"></span>' + label + detail;
+    var cls = isOpen ? "is-open" : "is-closed";
+    var heroEl = document.querySelector("[data-hero-status]");
+    if (heroEl) { heroEl.className = "hero-status " + cls; heroEl.innerHTML = html; }
+    var trustEl = document.querySelector("[data-trust-live]");
+    if (trustEl) { trustEl.className = "trust-item " + cls; trustEl.innerHTML = html; }
   }
 
   /* ===================== SERVICIOS (desde config) ===================== */
@@ -367,7 +391,8 @@
         tag +
         '<div class="service-head"><h3></h3><span class="service-price">$' + s.price + "</span></div>" +
         '<p class="service-desc"></p>' +
-        '<span class="service-time">⏱ ' + s.minutes + " min</span>";
+        '<span class="service-time">⏱ ' + s.minutes + " min</span>" +
+        '<button type="button" class="btn btn-outline service-book" data-booking-trigger data-service="' + s.name[currentLang].replace(/"/g, "&quot;") + '">' + t("svc.book") + "</button>";
       card.querySelector("h3").textContent = s.name[currentLang];
       card.querySelector(".service-desc").textContent = s.desc[currentLang];
       grid.appendChild(card);
@@ -428,6 +453,27 @@
         renderReviews(reviewsData);
       })
       .catch(function () { /* conserva las reseñas de config.js */ });
+  }
+
+  /* ===================== SECCIÓN "SÍGUENOS" ===================== */
+  function renderSocialSection() {
+    var grid = document.getElementById("socialGrid");
+    if (!grid || !cfg.socialProfiles) return;
+    grid.innerHTML = "";
+    cfg.socialProfiles.forEach(function (p) {
+      if (!p || !p.url) return;
+      var a = document.createElement("a");
+      a.className = "social-card social-" + (p.network || "");
+      a.href = p.url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.setAttribute("aria-label", (p.network || "social") + " " + (p.handle || ""));
+      a.innerHTML =
+        '<span class="social-card-ico">' + (SOCIAL_ICONS[p.network] || "") + "</span>" +
+        '<span class="social-card-body"><strong>' + (p.handle || "") + "</strong><small>" + (p.sub || p.network || "") + "</small></span>" +
+        '<span class="social-card-arrow" aria-hidden="true">→</span>';
+      grid.appendChild(a);
+    });
   }
 
   /* ===================== SERVICIOS EN FORM ===================== */
@@ -520,7 +566,7 @@
 
   dateInput.min = new Date().toISOString().split("T")[0];
 
-  function openModal(branch) {
+  function openModal(branch, service) {
     lastFocused = document.activeElement;
     modal.hidden = false;
     document.body.style.overflow = "hidden";
@@ -532,6 +578,10 @@
       }
       branchSelect.value = branch;
     }
+    if (service) {
+      var sopt = Array.prototype.slice.call(serviceSelect.options).filter(function (o) { return o.value === service; })[0];
+      if (sopt) serviceSelect.value = service;
+    }
     setTimeout(function () { document.getElementById("f-name").focus(); }, 60);
   }
   function closeModal() {
@@ -540,11 +590,13 @@
     if (lastFocused) lastFocused.focus();
   }
 
-  document.querySelectorAll("[data-booking-trigger]").forEach(function (el) {
-    el.addEventListener("click", function () {
-      closeMenu();
-      openModal(el.getAttribute("data-branch"));
-    });
+  // Delegación: cubre botones estáticos y los generados dinámicamente (servicios)
+  document.addEventListener("click", function (e) {
+    var el = e.target.closest ? e.target.closest("[data-booking-trigger]") : null;
+    if (!el) return;
+    e.preventDefault();
+    closeMenu();
+    openModal(el.getAttribute("data-branch"), el.getAttribute("data-service"));
   });
   modalClose.addEventListener("click", closeModal);
   modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });

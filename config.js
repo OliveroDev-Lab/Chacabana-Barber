@@ -12,6 +12,9 @@ window.SITE_CONFIG = {
   /* ⚠️ WhatsApp: formato internacional, SIN "+", SIN espacios ni guiones.
      Ej. EE.UU. 210-555-1234  ->  "12105551234" */
   whatsapp: "12104735328",
+  /* Teléfono (mismo para todas las sucursales). Formato internacional sin + ni espacios. */
+  phone: "12104735328",
+  phoneDisplay: "(210) 473-5328",
 
   /* Redes y perfiles (pon los reales) */
   instagram: "https://www.instagram.com/chacabanabarber/",
@@ -20,9 +23,15 @@ window.SITE_CONFIG = {
      Deja "" en las que aún no tengas: no se muestran. */
   social: {
     instagram: "https://www.instagram.com/chacabanabarber/",
-    tiktok: "",
+    tiktok: "https://www.tiktok.com/@chacabana.barbers",
     facebook: ""
   },
+  /* Tarjetas de la sección "Síguenos" (red, link, handle y subtítulo) */
+  socialProfiles: [
+    { network: "instagram", url: "https://www.instagram.com/chacabanabarber/", handle: "@chacabanabarber", sub: "Eisenhauer Rd" },
+    { network: "instagram", url: "https://www.instagram.com/chacabanabarbershop2/", handle: "@chacabanabarbershop2", sub: "Schaefer Rd" },
+    { network: "tiktok", url: "https://www.tiktok.com/@chacabana.barbers", handle: "@chacabana.barbers", sub: "TikTok" }
+  ],
   /* Reseñas de Google vía Places API (a través de /api/reviews).
      Si aún no hay llave configurada, la web usa las reseñas de abajo. */
   reviewsApi: "/api/reviews",
