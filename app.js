@@ -42,7 +42,7 @@
       "status.open": "Abierto ahora", "status.closed": "Cerrado", "status.closesAt": "Cierra {t}", "status.opensAt": "Abre {t}",
       "book.title": "¿Listo para tu próximo corte?",
       "book.lead": "Completa tus datos y confirma tu cita directo por WhatsApp. Rápido, fácil y sin esperas.",
-      "book.point1": "✅ Confirmación inmediata", "book.point2": "✅ Elige tu sucursal y barbero", "book.point3": "✅ Sin llamadas ni apps complicadas",
+      "book.point1": "✅ Confirmación inmediata", "book.point2": "✅ Elige tu sucursal y servicio", "book.point3": "✅ Sin llamadas ni apps complicadas",
       "book.cta": "Agendar Cita por WhatsApp",
       "footer.tagline": "El mejor corte y estilo fresco en San Antonio, TX. Precisión, sabor latino y comodidad.",
       "footer.reviews": "Basado en reseñas de Google",
@@ -95,7 +95,7 @@
       "status.open": "Open now", "status.closed": "Closed", "status.closesAt": "Closes {t}", "status.opensAt": "Opens {t}",
       "book.title": "Ready for your next cut?",
       "book.lead": "Fill in your details and confirm your appointment straight through WhatsApp. Fast, easy and no waiting.",
-      "book.point1": "✅ Instant confirmation", "book.point2": "✅ Choose your location and barber", "book.point3": "✅ No calls or complicated apps",
+      "book.point1": "✅ Instant confirmation", "book.point2": "✅ Choose your location and service", "book.point3": "✅ No calls or complicated apps",
       "book.cta": "Book Appointment on WhatsApp",
       "footer.tagline": "San Antonio's premier barber experience. Precision, Latino flavor and comfort.",
       "footer.reviews": "Based on Google reviews",
@@ -215,10 +215,7 @@
     });
 
     // Rating
-    if (cfg.rating) {
-      document.querySelectorAll("[data-rating-value]").forEach(function (el) { el.textContent = cfg.rating.value.toFixed(1); });
-      document.querySelectorAll("[data-rating-count]").forEach(function (el) { el.textContent = cfg.rating.count; });
-    }
+    updateRating();
 
     // Sucursales en el <select> del formulario
     var branchSelect = document.getElementById("f-branch");
@@ -378,42 +375,59 @@
   }
 
   /* ===================== RESEÑAS (desde config) ===================== */
-  function renderReviews() {
+  function reviewText(r) {
+    if (typeof r.text === "string") return r.text;
+    if (r.text && typeof r.text === "object") return r.text[currentLang] || r.text.es || r.text.en || "";
+    return "";
+  }
+  function renderReviews(list) {
     var grid = document.getElementById("reviewsGrid");
-    if (!grid || !cfg.reviews) return;
+    var data = list || reviewsData || cfg.reviews;
+    if (!grid || !data) return;
     grid.innerHTML = "";
-    cfg.reviews.forEach(function (r) {
+    data.forEach(function (r) {
       var card = document.createElement("article");
       card.className = "review-card";
-      var stars = "★★★★★".slice(0, r.rating) + "☆☆☆☆☆".slice(0, 5 - r.rating);
+      var rating = Math.max(0, Math.min(5, Math.round(r.rating || 5)));
+      var stars = "★★★★★".slice(0, rating) + "☆☆☆☆☆".slice(0, 5 - rating);
       card.innerHTML =
         '<div class="review-top">' +
           '<span class="review-avatar">' + (r.author || "?").charAt(0) + "</span>" +
           "<div><strong></strong><small></small></div>" +
-          '<span class="review-stars" aria-label="' + r.rating + '/5">' + stars + "</span>" +
+          '<span class="review-stars" aria-label="' + rating + '/5">' + stars + "</span>" +
         "</div>" +
         '<p class="review-text"></p>' +
         '<span class="review-source">Google</span>';
-      card.querySelector("strong").textContent = r.author;
-      card.querySelector("small").textContent = r.date;
-      card.querySelector(".review-text").textContent = r.text[currentLang];
+      card.querySelector("strong").textContent = r.author || "Google";
+      card.querySelector("small").textContent = r.date || "";
+      card.querySelector(".review-text").textContent = reviewText(r);
       grid.appendChild(card);
     });
   }
 
-  /* ===================== BARBEROS (desde config) ===================== */
-  function renderBarbers() {
-    var sel = document.getElementById("f-barber");
-    if (!sel) return;
-    var prev = sel.value;
-    sel.innerHTML = "";
-    var any = document.createElement("option");
-    any.value = t("form.barber.any"); any.textContent = t("form.barber.any");
-    sel.appendChild(any);
-    (cfg.barbers || []).forEach(function (b) {
-      var o = document.createElement("option"); o.value = b; o.textContent = b; sel.appendChild(o);
-    });
-    if (prev) sel.value = prev;
+  function updateRating() {
+    if (!cfg.rating) return;
+    document.querySelectorAll("[data-rating-value]").forEach(function (el) { el.textContent = Number(cfg.rating.value).toFixed(1); });
+    document.querySelectorAll("[data-rating-count]").forEach(function (el) { el.textContent = cfg.rating.count; });
+  }
+
+  function loadReviews() {
+    if (!window.fetch) return;
+    var url = cfg.reviewsApi || "/api/reviews";
+    fetch(url, { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (data) {
+        if (!data || !data.configured || !data.reviews || !data.reviews.length) return;
+        if (data.rating) {
+          cfg.rating = { value: data.rating, count: data.count || (cfg.rating && cfg.rating.count) || 0 };
+          updateRating();
+        }
+        reviewsData = data.reviews.map(function (r) {
+          return { author: r.author, rating: r.rating, date: r.time, text: r.text };
+        });
+        renderReviews(reviewsData);
+      })
+      .catch(function () { /* conserva las reseñas de config.js */ });
   }
 
   /* ===================== SERVICIOS EN FORM ===================== */
@@ -485,7 +499,6 @@
     renderServices();
     renderReviews();
     renderServiceOptions();
-    renderBarbers();
     renderStatuses();
     if (galleryItems.length) renderGalleryPage(false);
     try { localStorage.setItem("chacabana-lang", lang); } catch (e) {}
@@ -570,7 +583,6 @@
     var name = document.getElementById("f-name").value.trim();
     var branch = branchSelect.value;
     var service = serviceSelect.value;
-    var barber = document.getElementById("f-barber").value;
     var date = dateInput.value;
     var time = document.getElementById("f-time").value;
     var notes = document.getElementById("f-notes").value.trim();
@@ -578,7 +590,6 @@
     var lines = [t("wa.header"), "", t("wa.branch") + " " + branch, t("wa.name") + " " + name, t("wa.service") + " " + service];
     if (date) lines.push(t("wa.date") + " " + date);
     if (time) lines.push(t("wa.time") + " " + time);
-    if (barber) lines.push(t("wa.barber") + " " + barber);
     if (notes) lines.push(t("wa.notes") + " " + notes);
     lines.push("", t("wa.footer"));
 
@@ -590,6 +601,7 @@
   /* ===================== GALERÍA INTERACTIVA + LIGHTBOX ===================== */
   var galleryItems = [];
   var galleryPage = 0;
+  var reviewsData = null;
   var lbIndex = 0;
   var lightbox = null;
   var tsx = 0, tsy = 0;
@@ -837,9 +849,10 @@
 
   var savedLang = null;
   try { savedLang = localStorage.getItem("chacabana-lang"); } catch (e) {}
-  if (!savedLang) savedLang = (navigator.language || "es").toLowerCase().indexOf("en") === 0 ? "en" : "es";
+  if (!savedLang) savedLang = "en"; // idioma por defecto: inglés
   applyLang(savedLang);
   loadGallery();
+  loadReviews();
 
   setInterval(renderStatuses, 60000);
 })();

@@ -23,8 +23,11 @@ window.SITE_CONFIG = {
     tiktok: "",
     facebook: ""
   },
-  googleReviewsUrl: "https://search.google.com/local/reviews?placeid=YOUR_PLACE_ID",
-  googleProfileUrl: "https://maps.app.goo.gl/ompSfuD82TB1nF2V8",
+  /* Reseñas de Google vía Places API (a través de /api/reviews).
+     Si aún no hay llave configurada, la web usa las reseñas de abajo. */
+  reviewsApi: "/api/reviews",
+  googleReviewsUrl: "https://search.google.com/local/reviews?placeid=ChIJqatzb2bzXIYRgaB4iY4gjX0",
+  googleProfileUrl: "https://maps.app.goo.gl/MfyK2U1XcHo9h5SE6",
 
   /* Analítica privada de Cloudflare Web Analytics.
      Crea el sitio en Cloudflare Pages > Web Analytics y pega aquí el token.
@@ -48,6 +51,7 @@ window.SITE_CONFIG = {
       id: "eisenhauer",
       name: "Eisenhauer Rd",
       image: "images/gallery/full/gallery-01.webp",
+      placeId: "ChIJqatzb2bzXIYRgaB4iY4gjX0",
       instagram: "https://www.instagram.com/chacabanabarber/",
       instagramHandle: "@chacabanabarber",
       street: "5002 Eisenhauer Rd",
@@ -70,6 +74,7 @@ window.SITE_CONFIG = {
       id: "schaefer",
       name: "Schaefer Rd",
       image: "images/gallery/full/gallery-07.webp",
+      placeId: "ChIJjbWYgNbtXIYRx1GVxrRM7NU",
       instagram: "https://www.instagram.com/chacabanabarbershop2/",
       instagramHandle: "@chacabanabarbershop2",
       street: "9204 Schaefer Rd",
@@ -101,10 +106,6 @@ window.SITE_CONFIG = {
       name: { es: "Fade & Taper", en: "Fade & Taper" },
       desc: { es: "Skin Fade, Burst Fade o Taper Fade con degradado perfecto.",
               en: "Skin Fade, Burst Fade or Taper Fade with a flawless blend." } },
-    { id: "beard", price: 18, minutes: 25,
-      name: { es: "Barba & Toalla Caliente", en: "Beard Trim & Hot Towel" },
-      desc: { es: "Perfilado con navaja, toalla caliente y aceites hidratantes.",
-              en: "Razor line-up, hot towel and moisturizing oils." } },
     { id: "vip", price: 45, minutes: 60, featured: true,
       name: { es: "Combo Chacabana VIP", en: "Chacabana VIP Combo" },
       desc: { es: "Corte + Barba + Mascarilla facial. La experiencia completa.",
