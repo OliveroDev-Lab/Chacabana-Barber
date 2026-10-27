@@ -25,8 +25,8 @@
       "branch.badge1": "SUCURSAL 1", "branch.badge2": "SUCURSAL 2",
       "branch.directions": "Cómo llegar (Google Maps)", "branch.book": "Agendar en esta Sucursal",
       "hours.weekdays": "Lun – Sáb", "hours.sunday": "Domingo",
-      "services.kicker": "MENÚ & PRECIOS", "services.title": "Servicios que te dejan listo",
-      "services.lead": "Precios claros, tiempos estimados y resultados que hablan solos.",
+      "services.kicker": "MENÚ DE SERVICIOS", "services.title": "Servicios que te dejan listo",
+      "services.lead": "Tiempos estimados y resultados que hablan solos. Pregunta por precios en sucursal.",
       "svc.featured": "MÁS PEDIDO",
       "gallery.kicker": "GALERÍA", "gallery.title": "Nuestro trabajo habla por sí solo",
       "gallery.lead": "Cortes, barbas y transformaciones reales hechas en el sillón de Chacabana.",
@@ -52,7 +52,7 @@
       "footer.credit": "Desarrollado con 💈 para San Antonio, TX.",
       "legal.privacy": "Privacidad", "legal.terms": "Términos", "legal.accessibility": "Accesibilidad",
       "footer.madeby": "Sitio web creado por",
-      "hero.note": "Cortes desde $25 · Aceptamos sin cita",
+      "hero.note": "Aceptamos sin cita",
       "trust.google": "en Google", "trust.locations": "2 sucursales", "trust.walkins": "Aceptamos sin cita",
       "branch.call": "Llamar",
       "bar.book": "Agendar", "bar.call": "Llamar", "bar.directions": "Cómo llegar",
@@ -85,8 +85,8 @@
       "branch.badge1": "LOCATION 1", "branch.badge2": "LOCATION 2",
       "branch.directions": "Get Directions (Google Maps)", "branch.book": "Book at this Location",
       "hours.weekdays": "Mon – Sat", "hours.sunday": "Sunday",
-      "services.kicker": "MENU & PRICES", "services.title": "Services that get you sharp",
-      "services.lead": "Clear prices, estimated times and results that speak for themselves.",
+      "services.kicker": "SERVICE MENU", "services.title": "Services that get you sharp",
+      "services.lead": "Estimated times and results that speak for themselves. Ask about pricing in store.",
       "svc.featured": "MOST POPULAR",
       "gallery.kicker": "GALLERY", "gallery.title": "Our work speaks for itself",
       "gallery.lead": "Real cuts, beards and transformations made in the Chacabana chair.",
@@ -112,7 +112,7 @@
       "footer.credit": "Built with 💈 for San Antonio, TX.",
       "legal.privacy": "Privacy", "legal.terms": "Terms", "legal.accessibility": "Accessibility",
       "footer.madeby": "Website by",
-      "hero.note": "Cuts from $25 · Walk-ins welcome",
+      "hero.note": "Walk-ins welcome",
       "trust.google": "on Google", "trust.locations": "2 locations", "trust.walkins": "Walk-ins welcome",
       "branch.call": "Call",
       "bar.book": "Book", "bar.call": "Call", "bar.directions": "Directions",
@@ -389,7 +389,7 @@
       var tag = s.featured ? '<span class="service-tag">' + t("svc.featured") + "</span>" : "";
       card.innerHTML =
         tag +
-        '<div class="service-head"><h3></h3><span class="service-price">$' + s.price + "</span></div>" +
+        '<div class="service-head"><h3></h3></div>' +
         '<p class="service-desc"></p>' +
         '<span class="service-time">⏱ ' + s.minutes + " min</span>" +
         '<button type="button" class="btn btn-outline service-book" data-booking-trigger data-service="' + s.name[currentLang].replace(/"/g, "&quot;") + '">' + t("svc.book") + "</button>";
