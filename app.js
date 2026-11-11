@@ -66,11 +66,7 @@
       "form.date": "Fecha deseada", "form.time": "Hora aproximada",
       "form.notes": "Notas / Comentarios", "form.notes.ph": "Ej. referencia de diseño, alergias, etc.",
       "form.submit": "Confirmar y Enviar a WhatsApp", "form.hint": "Se abrirá WhatsApp con tu mensaje listo para enviar.",
-      "form.required": "Por favor completa los campos obligatorios.",
-      "wa.header": "¡Hola Chacabana Barber Shop! 👋 Deseo agendar una cita:",
-      "wa.branch": "📍 *Sucursal:*", "wa.name": "👤 *Nombre:*", "wa.service": "✂️ *Servicio:*",
-      "wa.date": "📅 *Fecha:*", "wa.time": "🕐 *Hora:*", "wa.barber": "💈 *Barbero:*", "wa.notes": "📝 *Notas:*",
-      "wa.footer": "¡Gracias! 🙌"
+      "form.required": "Por favor completa los campos obligatorios."
     },
     en: {
       "skip": "Skip to content",
@@ -126,11 +122,7 @@
       "form.date": "Preferred date", "form.time": "Approximate time",
       "form.notes": "Notes / Comments", "form.notes.ph": "E.g. style reference, allergies, etc.",
       "form.submit": "Confirm & Send to WhatsApp", "form.hint": "WhatsApp will open with your message ready to send.",
-      "form.required": "Please fill in the required fields.",
-      "wa.header": "Hi Chacabana Barber Shop! 👋 I'd like to book an appointment:",
-      "wa.branch": "📍 *Location:*", "wa.name": "👤 *Name:*", "wa.service": "✂️ *Service:*",
-      "wa.date": "📅 *Date:*", "wa.time": "🕐 *Time:*", "wa.barber": "💈 *Barber:*", "wa.notes": "📝 *Notes:*",
-      "wa.footer": "Thanks! 🙌"
+      "form.required": "Please fill in the required fields."
     }
   };
 
@@ -392,7 +384,7 @@
         '<div class="service-head"><h3></h3></div>' +
         '<p class="service-desc"></p>' +
         '<span class="service-time">⏱ ' + s.minutes + " min</span>" +
-        '<button type="button" class="btn btn-outline service-book" data-booking-trigger data-service="' + s.name[currentLang].replace(/"/g, "&quot;") + '">' + t("svc.book") + "</button>";
+        '<button type="button" class="btn btn-outline service-book" data-booking-trigger data-service="' + s.id + '">' + t("svc.book") + "</button>";
       card.querySelector("h3").textContent = s.name[currentLang];
       card.querySelector(".service-desc").textContent = s.desc[currentLang];
       grid.appendChild(card);
@@ -484,7 +476,7 @@
     sel.innerHTML = "";
     cfg.services.forEach(function (s) {
       var o = document.createElement("option");
-      o.value = s.name[currentLang];
+      o.value = s.id;
       o.textContent = s.name[currentLang];
       sel.appendChild(o);
     });
@@ -639,11 +631,26 @@
     var time = document.getElementById("f-time").value;
     var notes = document.getElementById("f-notes").value.trim();
 
-    var lines = [t("wa.header"), "", t("wa.branch") + " " + branch, t("wa.name") + " " + name, t("wa.service") + " " + service];
-    if (date) lines.push(t("wa.date") + " " + date);
-    if (time) lines.push(t("wa.time") + " " + time);
-    if (notes) lines.push(t("wa.notes") + " " + notes);
-    lines.push("", t("wa.footer"));
+    /* Mensaje bilingüe: se envía en español e inglés sin importar el idioma activo */
+    var serviceData = (cfg.services || []).filter(function (s) { return s.id === service; })[0];
+    var serviceText = serviceData
+      ? (serviceData.name.es === serviceData.name.en
+          ? serviceData.name.es
+          : serviceData.name.es + " / " + serviceData.name.en)
+      : service;
+
+    var lines = [
+      "¡Hola Chacabana Barber Shop! 👋 Deseo agendar una cita:",
+      "Hi Chacabana Barber Shop! 👋 I'd like to book an appointment:",
+      "",
+      "📍 *Sucursal / Location:* " + branch,
+      "👤 *Nombre / Name:* " + name,
+      "✂️ *Servicio / Service:* " + serviceText
+    ];
+    if (date) lines.push("📅 *Fecha / Date:* " + date);
+    if (time) lines.push("🕐 *Hora / Time:* " + time);
+    if (notes) lines.push("📝 *Notas / Notes:* " + notes);
+    lines.push("", "¡Gracias! 🙌 / Thanks! 🙌");
 
     var url = "https://wa.me/" + WA + "?text=" + encodeURIComponent(lines.join("\n"));
     window.open(url, "_blank", "noopener");
