@@ -1,6 +1,18 @@
 [
   {
     "type": "image",
+    "id": "gallery-13",
+    "thumb": "images/gallery/thumb/gallery-13.webp",
+    "full": "images/gallery/full/gallery-13.webp",
+    "width": 525,
+    "height": 700,
+    "fullWidth": 1200,
+    "fullHeight": 1600,
+    "alt": "Chacabana Barber Shop - San Antonio, TX",
+    "source": "chacabana-davis.jpeg"
+  },
+  {
+    "type": "image",
     "id": "gallery-01",
     "thumb": "images/gallery/thumb/gallery-01.webp",
     "full": "images/gallery/full/gallery-01.webp",
@@ -142,18 +154,6 @@
     "fullHeight": 1600,
     "alt": "Chacabana Barber Shop - San Antonio, TX",
     "source": "chacabana-12.jpeg"
-  },
-  {
-    "type": "image",
-    "id": "gallery-13",
-    "thumb": "images/gallery/thumb/gallery-13.webp",
-    "full": "images/gallery/full/gallery-13.webp",
-    "width": 525,
-    "height": 700,
-    "fullWidth": 1200,
-    "fullHeight": 1600,
-    "alt": "Chacabana Barber Shop - San Antonio, TX",
-    "source": "chacabana-davis.jpeg"
   },
   {
     "type": "image",
