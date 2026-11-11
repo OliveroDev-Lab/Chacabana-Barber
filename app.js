@@ -131,6 +131,29 @@
     return (translations[currentLang] && translations[currentLang][key]) || key;
   }
 
+  /* Preferencia manual de idioma (solo se escribe al pulsar ES/EN).
+     Se usa una clave propia para no confundirla con el valor antiguo,
+     que se guardaba automáticamente en cada carga. */
+  var LANG_KEY = "chacabana-lang-choice";
+
+  /* Detecta el idioma del navegador del visitante.
+     Recorre navigator.languages en orden de preferencia y devuelve
+     "es" o "en" para el primero que esté soportado. Fallback: "en". */
+  function detectLang() {
+    var supported = ["es", "en"];
+    var prefs = [];
+    if (navigator.languages && navigator.languages.length) {
+      prefs = Array.prototype.slice.call(navigator.languages);
+    }
+    if (navigator.language) prefs.push(navigator.language);
+    if (navigator.userLanguage) prefs.push(navigator.userLanguage);
+    for (var i = 0; i < prefs.length; i++) {
+      var base = String(prefs[i] || "").toLowerCase().split("-")[0];
+      if (supported.indexOf(base) !== -1) return base;
+    }
+    return "en";
+  }
+
   /* ===================== HELPERS ===================== */
   function toMin(hhmm) { var p = hhmm.split(":"); return (+p[0]) * 60 + (+p[1]); }
   function fmt12(hhmm) {
@@ -510,7 +533,7 @@
   /* ===================== IDIOMA ===================== */
   var langButtons = document.querySelectorAll("[data-lang-btn]");
 
-  function applyLang(lang) {
+  function applyLang(lang, persist) {
     currentLang = lang;
     document.documentElement.lang = lang;
     document.documentElement.setAttribute("data-lang", lang);
@@ -539,11 +562,14 @@
     renderServiceOptions();
     renderStatuses();
     if (galleryItems.length) renderGalleryPage(false);
-    try { localStorage.setItem("chacabana-lang", lang); } catch (e) {}
+    // Solo se guarda la preferencia cuando el usuario elige idioma manualmente
+    if (persist) {
+      try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+    }
   }
 
   langButtons.forEach(function (btn) {
-    btn.addEventListener("click", function () { applyLang(btn.getAttribute("data-lang-btn")); });
+    btn.addEventListener("click", function () { applyLang(btn.getAttribute("data-lang-btn"), true); });
   });
 
   /* ===================== MODAL ===================== */
@@ -907,9 +933,10 @@
   applyConfig();
 
   var savedLang = null;
-  try { savedLang = localStorage.getItem("chacabana-lang"); } catch (e) {}
-  if (!savedLang) savedLang = "en"; // idioma por defecto: inglés
-  applyLang(savedLang);
+  try { savedLang = localStorage.getItem(LANG_KEY); } catch (e) {}
+  // Preferencia manual del usuario → si no hay, se usa el idioma del navegador
+  var initialLang = (savedLang === "es" || savedLang === "en") ? savedLang : detectLang();
+  applyLang(initialLang, false);
   loadGallery();
   loadReviews();
 
